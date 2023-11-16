@@ -1,0 +1,58 @@
+{
+  "name": "MasterAccount",
+  "fields": [
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique", "required", "minlength", "maxlength", "pattern"],
+      "fieldValidateRulesMinlength": "5",
+      "fieldValidateRulesMaxlength": "256",
+      "fieldValidateRulesPattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+    },
+    {
+      "fieldName": "hashPassword",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "accountBalance",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "accountStatus",
+      "fieldType": "AccountStatus",
+      "fieldValues": "ACTIVATED,UNACTIVATED,UNAVAILABLE,BAN"
+    },
+    {
+      "fieldName": "subscriptionStatus",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "subscriptionStartDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "subscriptionEndDate",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "gameAccount",
+      "otherEntityRelationshipName": "masterAccount",
+      "relationshipName": "gameAccount"
+    }
+  ],
+  "changelogDate": "20231116115724",
+  "entityTableName": "master_account",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["cgatewaysvc"]
+}

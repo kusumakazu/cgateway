@@ -1,0 +1,38 @@
+{
+  "name": "GameAccount",
+  "fields": [
+    {
+      "fieldName": "accountName",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique", "required", "minlength", "maxlength"],
+      "fieldValidateRulesMinlength": "5",
+      "fieldValidateRulesMaxlength": "15"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "player",
+      "otherEntityRelationshipName": "gameAccount",
+      "relationshipName": "player"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "masterAccount",
+      "otherEntityRelationshipName": "gameAccount",
+      "relationshipName": "masterAccount",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20231116115824",
+  "entityTableName": "game_account",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["cgatewaysvc"]
+}

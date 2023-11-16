@@ -1,0 +1,65 @@
+{
+  "name": "ItemObject",
+  "fields": [
+    {
+      "fieldName": "itemName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "itemDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "obtainedfrom",
+      "fieldType": "ObtainFrom",
+      "fieldValues": "CASHSHOP,CRAFTING,MOBDROP,DUNGEONDROP,MISC"
+    },
+    {
+      "fieldName": "isEnchant",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "weapon",
+      "otherEntityRelationshipName": "itemObject",
+      "relationshipName": "weapon",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "armor",
+      "otherEntityRelationshipName": "itemObject",
+      "relationshipName": "armor",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "playerInventory",
+      "otherEntityRelationshipName": "itemObject",
+      "relationshipName": "playerInventory",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "storageInventory",
+      "otherEntityRelationshipName": "itemObject",
+      "relationshipName": "storageInventory",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20231116120024",
+  "entityTableName": "item_object",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["cgatewaysvc"]
+}

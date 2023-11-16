@@ -1,0 +1,78 @@
+{
+  "name": "PlayerClass",
+  "fields": [
+    {
+      "fieldName": "className",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "classDetailInfo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "classAtkType",
+      "fieldType": "ClassAtkType",
+      "fieldValues": "RANGED,PHYSICAL,MAGIC"
+    },
+    {
+      "fieldName": "classBonusStatA",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "classBonusStatB",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "classBonusStatC",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "classBonusStatD",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "classBonusStatE",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "classBonusStatF",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "classBonusStatG",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "classBonusStatH",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "classBonusHP",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "classBonusSP",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "player",
+      "otherEntityRelationshipName": "playerClass",
+      "relationshipName": "player",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20231116120624",
+  "entityTableName": "player_class",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["cgatewaysvc"]
+}

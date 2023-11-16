@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity ItemObject.
+    -->
+    <changeSet id="20231116120024-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="item_object_id"
+                                 baseTableName="item_object_weapon"
+                                 constraintName="fk_item_object_weapon_item_object_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="item_object"/>
+
+        <addForeignKeyConstraint baseColumnNames="weapon_id"
+                                 baseTableName="item_object_weapon"
+                                 constraintName="fk_item_object_weapon_weapon_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="weapon"/>
+        
+        <addForeignKeyConstraint baseColumnNames="item_object_id"
+                                 baseTableName="item_object_armor"
+                                 constraintName="fk_item_object_armor_item_object_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="item_object"/>
+
+        <addForeignKeyConstraint baseColumnNames="armor_id"
+                                 baseTableName="item_object_armor"
+                                 constraintName="fk_item_object_armor_armor_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="armor"/>
+        
+        <addForeignKeyConstraint baseColumnNames="player_inventory_id"
+                                 baseTableName="item_object"
+                                 constraintName="fk_item_object_player_inventory_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="player_inventory"/>
+
+        <addForeignKeyConstraint baseColumnNames="storage_inventory_id"
+                                 baseTableName="item_object"
+                                 constraintName="fk_item_object_storage_inventory_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="storage_inventory"/>
+
+    </changeSet>
+</databaseChangeLog>

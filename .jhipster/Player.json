@@ -1,0 +1,76 @@
+{
+  "name": "Player",
+  "fields": [
+    {
+      "fieldName": "characterName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "characterType",
+      "fieldType": "PlayerType",
+      "fieldValues": "HUMAN,ELF,ORC,DEMI"
+    },
+    {
+      "fieldName": "characterFaction",
+      "fieldType": "Faction",
+      "fieldValues": "FACTION_A,FACTION_B,NEUTRAL"
+    },
+    {
+      "fieldName": "experience",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "characterLevel",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "lastLocation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastLocationCoordinate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastLogin",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "playerDetl",
+      "otherEntityRelationshipName": "player",
+      "relationshipName": "playerDetl",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "playerClass",
+      "otherEntityRelationshipName": "player",
+      "relationshipName": "playerClass",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "gameAccount",
+      "otherEntityRelationshipName": "player",
+      "relationshipName": "gameAccount",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20231116115924",
+  "entityTableName": "player",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["cgatewaysvc"]
+}

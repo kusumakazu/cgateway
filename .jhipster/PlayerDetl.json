@@ -1,0 +1,93 @@
+{
+  "name": "PlayerDetl",
+  "fields": [
+    {
+      "fieldName": "charaAttributePoints",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "charaStatA",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "charaStatB",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "charaStatC",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "charaStatD",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "charaStatE",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "charaStatF",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "charaStatG",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "charaStatH",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "charaBehaviourA",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "charaBehaviourB",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "charaStatHP",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "charaStatMP",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "playerInventory",
+      "otherEntityRelationshipName": "playerDetl",
+      "relationshipName": "playerInventory",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "playerCurrency",
+      "otherEntityRelationshipName": "playerDetl",
+      "relationshipName": "playerCurrency",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "player",
+      "otherEntityRelationshipName": "playerDetl",
+      "relationshipName": "player",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20231116120324",
+  "entityTableName": "player_detl",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["cgatewaysvc"]
+}

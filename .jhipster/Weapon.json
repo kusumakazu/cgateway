@@ -1,0 +1,49 @@
+{
+  "name": "Weapon",
+  "fields": [
+    {
+      "fieldName": "weaponName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "baseATK",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "weaponType",
+      "fieldType": "WeaponType",
+      "fieldValues": "STAFF,WAND,LONGBOW,CROSSBOW,SWORD,GREATSWORD,DAGGER,MACE"
+    },
+    {
+      "fieldName": "weaponSize",
+      "fieldType": "WeaponSize",
+      "fieldValues": "HEAVY,MEDIUM,SHORT"
+    },
+    {
+      "fieldName": "rarity",
+      "fieldType": "Rarity",
+      "fieldValues": "COMMON,UNCOMMON,RARE,EPIC,LEGENDAY,MYTHIC,ARTIFACT"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "itemObject",
+      "otherEntityRelationshipName": "weapon",
+      "relationshipName": "itemObject",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20231116120124",
+  "entityTableName": "weapon",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["cgatewaysvc"]
+}

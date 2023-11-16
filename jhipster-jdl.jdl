@@ -1,0 +1,213 @@
+/////////////////////////////////
+// game service idea for 2d game
+// created by : kusumakazu
+/////////////////////////////////
+DEFAULT_MIN_LENGTH = 4
+DEFAULT_MAX_LENGTH = 64
+URL_MAX_LENGTH = 2048
+EMAIL_MAX_LENGTH = 256
+ACCOUNT_NAME_MAX_LENGTH = 15
+TEXT_MAX_LENGTH = 512
+PATH_MAX_LENGTH = 128
+DEFAULT_MIN = 0
+DEFAULT_MAX = 999
+
+application {
+    config {
+        baseName cgatewaysvc
+        applicationType microservice
+        packageName com.id.kusumakazu
+        authenticationType jwt
+        devDatabaseType mysql
+        prodDatabaseType mysql
+        serverPort 6210
+        clientPackageManager npm
+        dtoSuffix DTO
+        buildTool gradle
+        cacheProvider no
+        enableSwaggerCodegen false
+        nativeLanguage en
+    }
+    dto * with mapstruct
+    entities *
+    paginate AccountTransactionHistory with pagination
+}
+
+//application {
+//  config {
+//    baseName characterservice
+//    applicationType microservice
+//    packageName com.id.kusumakazu
+//    authenticationType jwt
+//    prodDatabaseType mysql
+//    serverPort 6211
+//    clientPackageManager npm
+//    dtoSuffix DTO
+//  }
+//  entities Player, PlayerClass, PlayerDetail, PlayerInventory, PlayerCurrency
+//}
+
+//application {
+//  config {
+//    baseName coreservice
+//    applicationType microservice
+//    packageName com.id.kusumakazu
+//    authenticationType jwt
+//    prodDatabaseType mysql
+//  }
+//  entities Item, Weapon, Backpack, Armor, Projectile, Spell, Rarity, Potion, PotionType, Chest, Storage, Loot, WeaponStatus, Enchantment
+//}
+enum Rarity{
+    COMMON, UNCOMMON, RARE, EPIC, LEGENDAY, MYTHIC, ARTIFACT
+}
+enum TransactionType {
+    TOPUP, TRADE, CASHSHOP
+}
+enum AccountStatus {
+    ACTIVATED, UNACTIVATED, UNAVAILABLE, BAN
+    // activated = can create game account and access game
+    // unactivated = need activate first before access account menu
+    // unavailable = deleted account
+    // ban = banned from services
+}
+enum PlayerType {
+    HUMAN, ELF, ORC, DEMI
+}
+enum Faction {
+    FACTION_A, FACTION_B, NEUTRAL // neutral by default
+}
+enum WeaponType {
+    STAFF, WAND, LONGBOW, CROSSBOW, SWORD, GREATSWORD, DAGGER, MACE
+}
+enum WeaponSize {
+    HEAVY, MEDIUM, SHORT
+}
+enum ArmorType {
+    LEATHER, IRON, TEMPERIRON, STEEL, TEMPERSTEEL, CARBONGLASS, TEMPERCARBONGLASS, ORINITE, AETHERITE, MATTERITE
+}
+enum ArmorSize {
+    HEAVY, MEDIUM, SHORT
+}
+enum ClassAtkType {
+    RANGED, PHYSICAL, MAGIC
+}
+enum ObtainFrom {
+    CASHSHOP, CRAFTING, MOBDROP, DUNGEONDROP, MISC
+}
+entity StorageInventory {
+    storageInventoryName String
+    slot Integer
+    amount Integer
+    locationCoorA Integer
+    locationCoorB Integer
+}
+entity MasterAccount {
+    email String unique required minlength(5) maxlength(EMAIL_MAX_LENGTH) pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+    hashPassword String required
+    accountBalance Long
+    accountStatus AccountStatus
+    subscriptionStatus Boolean
+    subscriptionStartDate Instant
+    subscriptionEndDate String
+
+}
+entity GameAccount {
+    // for login to the game
+    accountName String unique required minlength(5) maxlength(ACCOUNT_NAME_MAX_LENGTH)
+}
+entity Player {
+    characterName String required
+    characterType PlayerType
+    characterFaction Faction
+    experience Long
+    characterLevel Integer
+    lastLocation String
+    lastLocationCoordinate String
+    lastLogin Instant
+
+}
+entity ItemObject{
+    itemName String
+    itemDescription String
+    obtainedfrom ObtainFrom
+    isEnchant Boolean
+}
+entity Weapon {
+    //	itemId Long
+    weaponName String
+    baseATK Double
+    weaponType WeaponType
+    weaponSize WeaponSize
+    rarity Rarity
+}
+entity Armor {
+    //	itemId Long
+    armorName String
+    baseDEF Double
+    baseHP Double
+    armorType ArmorType
+    armorsize ArmorSize
+    rarity Rarity
+}
+entity PlayerDetl {
+
+    charaAttributePoints Integer
+    charaStatA Double // P.ATK  *base stat increase within level up
+    charaStatB Double // M.ATK *base stat increase within level up
+    charaStatC Integer // AGI ->default 0
+    charaStatD Integer // STR ->default 0
+    charaStatE Integer // DEX ->default 0
+    charaStatF Integer // INT ->default 0
+    charaStatG Integer // LUK ->default 0
+    charaStatH Integer // VIT ->default 0
+    charaBehaviourA Double // cast Speed *base stat increase within level up
+    charaBehaviourB Double // atk Speed *base stat increase within level up
+    charaStatHP Double //->default 100 *base stat increase within level up **depends on selected class
+    charaStatMP Double //->default 50 *base stat increase within level up **depends on selected class
+}
+entity PlayerCurrency{
+    gold Long
+    silver Long
+    copper Long
+}
+entity PlayerInventory {
+    slot Integer
+    amount Integer
+}
+entity PlayerClass{
+    className String
+    classDetailInfo String
+    classAtkType ClassAtkType
+    classBonusStatA Double
+    classBonusStatB Double
+    classBonusStatC Integer
+    classBonusStatD Integer
+    classBonusStatE Integer
+    classBonusStatF Integer
+    classBonusStatG Integer
+    classBonusStatH Integer
+    classBonusHP Double
+    classBonusSP Double
+}
+entity AccountTransactionHistory {
+    transactionCode String
+    transactionType TransactionType
+    transactionDetail String
+}
+relationship ManyToMany {
+    ItemObject to Weapon
+    ItemObject to Armor
+}
+relationship OneToMany {
+    GameAccount to Player
+    MasterAccount to GameAccount
+    PlayerInventory to ItemObject
+    StorageInventory to ItemObject
+}
+relationship OneToOne {
+    Player to PlayerDetl
+    Player to PlayerClass
+    PlayerDetl to PlayerInventory
+    PlayerDetl to PlayerCurrency
+
+}

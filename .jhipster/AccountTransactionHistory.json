@@ -1,0 +1,30 @@
+{
+  "name": "AccountTransactionHistory",
+  "fields": [
+    {
+      "fieldName": "transactionCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "transactionType",
+      "fieldType": "TransactionType",
+      "fieldValues": "TOPUP,TRADE,CASHSHOP"
+    },
+    {
+      "fieldName": "transactionDetail",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20231116120724",
+  "entityTableName": "account_transaction_history",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["cgatewaysvc"]
+}

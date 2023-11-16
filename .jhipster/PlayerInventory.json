@@ -1,0 +1,39 @@
+{
+  "name": "PlayerInventory",
+  "fields": [
+    {
+      "fieldName": "slot",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "itemObject",
+      "otherEntityRelationshipName": "playerInventory",
+      "relationshipName": "itemObject"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "playerDetl",
+      "otherEntityRelationshipName": "playerInventory",
+      "relationshipName": "playerDetl",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20231116120524",
+  "entityTableName": "player_inventory",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["cgatewaysvc"]
+}

@@ -1,0 +1,53 @@
+{
+  "name": "Armor",
+  "fields": [
+    {
+      "fieldName": "armorName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "baseDEF",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "baseHP",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "armorType",
+      "fieldType": "ArmorType",
+      "fieldValues": "LEATHER,IRON,TEMPERIRON,STEEL,TEMPERSTEEL,CARBONGLASS,TEMPERCARBONGLASS,ORINITE,AETHERITE,MATTERITE"
+    },
+    {
+      "fieldName": "armorsize",
+      "fieldType": "ArmorSize",
+      "fieldValues": "HEAVY,MEDIUM,SHORT"
+    },
+    {
+      "fieldName": "rarity",
+      "fieldType": "Rarity",
+      "fieldValues": "COMMON,UNCOMMON,RARE,EPIC,LEGENDAY,MYTHIC,ARTIFACT"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "itemObject",
+      "otherEntityRelationshipName": "armor",
+      "relationshipName": "itemObject",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20231116120224",
+  "entityTableName": "armor",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["cgatewaysvc"]
+}

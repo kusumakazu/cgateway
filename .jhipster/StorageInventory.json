@@ -1,0 +1,44 @@
+{
+  "name": "StorageInventory",
+  "fields": [
+    {
+      "fieldName": "storageInventoryName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "slot",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "locationCoorA",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "locationCoorB",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "itemObject",
+      "otherEntityRelationshipName": "storageInventory",
+      "relationshipName": "itemObject"
+    }
+  ],
+  "changelogDate": "20231116115624",
+  "entityTableName": "storage_inventory",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["cgatewaysvc"]
+}
