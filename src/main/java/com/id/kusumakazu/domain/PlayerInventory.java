@@ -1,12 +1,10 @@
 package com.id.kusumakazu.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A PlayerInventory.
@@ -27,12 +25,13 @@ public class PlayerInventory implements Serializable {
     @Column(name = "amount")
     private Integer amount;
 
-    @OneToMany(mappedBy = "playerInventory")
-    private Set<ItemObject> itemObjects = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties(value = "playerInventories", allowSetters = true)
+    private ItemObject itemObject;
 
-    @OneToOne(mappedBy = "playerInventory")
-    @JsonIgnore
-    private PlayerDetl playerDetl;
+    @ManyToOne
+    @JsonIgnoreProperties(value = "playerInventories", allowSetters = true)
+    private Player player;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -69,42 +68,30 @@ public class PlayerInventory implements Serializable {
         this.amount = amount;
     }
 
-    public Set<ItemObject> getItemObjects() {
-        return itemObjects;
+    public ItemObject getItemObject() {
+        return itemObject;
     }
 
-    public PlayerInventory itemObjects(Set<ItemObject> itemObjects) {
-        this.itemObjects = itemObjects;
+    public PlayerInventory itemObject(ItemObject itemObject) {
+        this.itemObject = itemObject;
         return this;
     }
 
-    public PlayerInventory addItemObject(ItemObject itemObject) {
-        this.itemObjects.add(itemObject);
-        itemObject.setPlayerInventory(this);
+    public void setItemObject(ItemObject itemObject) {
+        this.itemObject = itemObject;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public PlayerInventory player(Player player) {
+        this.player = player;
         return this;
     }
 
-    public PlayerInventory removeItemObject(ItemObject itemObject) {
-        this.itemObjects.remove(itemObject);
-        itemObject.setPlayerInventory(null);
-        return this;
-    }
-
-    public void setItemObjects(Set<ItemObject> itemObjects) {
-        this.itemObjects = itemObjects;
-    }
-
-    public PlayerDetl getPlayerDetl() {
-        return playerDetl;
-    }
-
-    public PlayerInventory playerDetl(PlayerDetl playerDetl) {
-        this.playerDetl = playerDetl;
-        return this;
-    }
-
-    public void setPlayerDetl(PlayerDetl playerDetl) {
-        this.playerDetl = playerDetl;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

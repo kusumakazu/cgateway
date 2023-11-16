@@ -25,6 +25,9 @@
             <column name="transaction_detail" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="master_account_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

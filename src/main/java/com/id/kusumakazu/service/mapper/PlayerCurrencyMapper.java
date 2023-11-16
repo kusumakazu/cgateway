@@ -13,7 +13,7 @@ import org.mapstruct.*;
 public interface PlayerCurrencyMapper extends EntityMapper<PlayerCurrencyDTO, PlayerCurrency> {
 
 
-    @Mapping(target = "playerDetl", ignore = true)
+    @Mapping(target = "player", ignore = true)
     PlayerCurrency toEntity(PlayerCurrencyDTO playerCurrencyDTO);
 
     default PlayerCurrency fromId(Long id) {

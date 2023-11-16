@@ -35,6 +35,8 @@ public class PlayerDTO implements Serializable {
 
     private Long playerClassId;
 
+    private Long playerCurrencyId;
+
     private Long gameAccountId;
     
     public Long getId() {
@@ -125,6 +127,14 @@ public class PlayerDTO implements Serializable {
         this.playerClassId = playerClassId;
     }
 
+    public Long getPlayerCurrencyId() {
+        return playerCurrencyId;
+    }
+
+    public void setPlayerCurrencyId(Long playerCurrencyId) {
+        this.playerCurrencyId = playerCurrencyId;
+    }
+
     public Long getGameAccountId() {
         return gameAccountId;
     }
@@ -165,6 +175,7 @@ public class PlayerDTO implements Serializable {
             ", lastLogin='" + getLastLogin() + "'" +
             ", playerDetlId=" + getPlayerDetlId() +
             ", playerClassId=" + getPlayerClassId() +
+            ", playerCurrencyId=" + getPlayerCurrencyId() +
             ", gameAccountId=" + getGameAccountId() +
             "}";
     }

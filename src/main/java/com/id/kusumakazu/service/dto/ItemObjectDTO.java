@@ -1,9 +1,8 @@
 package com.id.kusumakazu.service.dto;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import com.id.kusumakazu.domain.enumeration.ObtainFrom;
+import com.id.kusumakazu.domain.enumeration.ItemObjectType;
 
 /**
  * A DTO for the {@link com.id.kusumakazu.domain.ItemObject} entity.
@@ -20,12 +19,8 @@ public class ItemObjectDTO implements Serializable {
 
     private Boolean isEnchant;
 
-    private Set<WeaponDTO> weapons = new HashSet<>();
-    private Set<ArmorDTO> armors = new HashSet<>();
+    private ItemObjectType itemObjectType;
 
-    private Long playerInventoryId;
-
-    private Long storageInventoryId;
     
     public Long getId() {
         return id;
@@ -67,36 +62,12 @@ public class ItemObjectDTO implements Serializable {
         this.isEnchant = isEnchant;
     }
 
-    public Set<WeaponDTO> getWeapons() {
-        return weapons;
+    public ItemObjectType getItemObjectType() {
+        return itemObjectType;
     }
 
-    public void setWeapons(Set<WeaponDTO> weapons) {
-        this.weapons = weapons;
-    }
-
-    public Set<ArmorDTO> getArmors() {
-        return armors;
-    }
-
-    public void setArmors(Set<ArmorDTO> armors) {
-        this.armors = armors;
-    }
-
-    public Long getPlayerInventoryId() {
-        return playerInventoryId;
-    }
-
-    public void setPlayerInventoryId(Long playerInventoryId) {
-        this.playerInventoryId = playerInventoryId;
-    }
-
-    public Long getStorageInventoryId() {
-        return storageInventoryId;
-    }
-
-    public void setStorageInventoryId(Long storageInventoryId) {
-        this.storageInventoryId = storageInventoryId;
+    public void setItemObjectType(ItemObjectType itemObjectType) {
+        this.itemObjectType = itemObjectType;
     }
 
     @Override
@@ -125,10 +96,7 @@ public class ItemObjectDTO implements Serializable {
             ", itemDescription='" + getItemDescription() + "'" +
             ", obtainedfrom='" + getObtainedfrom() + "'" +
             ", isEnchant='" + isIsEnchant() + "'" +
-            ", weapons='" + getWeapons() + "'" +
-            ", armors='" + getArmors() + "'" +
-            ", playerInventoryId=" + getPlayerInventoryId() +
-            ", storageInventoryId=" + getStorageInventoryId() +
+            ", itemObjectType='" + getItemObjectType() + "'" +
             "}";
     }
 }

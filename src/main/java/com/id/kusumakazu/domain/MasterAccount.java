@@ -53,6 +53,9 @@ public class MasterAccount implements Serializable {
     @OneToMany(mappedBy = "masterAccount")
     private Set<GameAccount> gameAccounts = new HashSet<>();
 
+    @OneToMany(mappedBy = "masterAccount")
+    private Set<AccountTransactionHistory> accountTransactionHistories = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -176,6 +179,31 @@ public class MasterAccount implements Serializable {
 
     public void setGameAccounts(Set<GameAccount> gameAccounts) {
         this.gameAccounts = gameAccounts;
+    }
+
+    public Set<AccountTransactionHistory> getAccountTransactionHistories() {
+        return accountTransactionHistories;
+    }
+
+    public MasterAccount accountTransactionHistories(Set<AccountTransactionHistory> accountTransactionHistories) {
+        this.accountTransactionHistories = accountTransactionHistories;
+        return this;
+    }
+
+    public MasterAccount addAccountTransactionHistory(AccountTransactionHistory accountTransactionHistory) {
+        this.accountTransactionHistories.add(accountTransactionHistory);
+        accountTransactionHistory.setMasterAccount(this);
+        return this;
+    }
+
+    public MasterAccount removeAccountTransactionHistory(AccountTransactionHistory accountTransactionHistory) {
+        this.accountTransactionHistories.remove(accountTransactionHistory);
+        accountTransactionHistory.setMasterAccount(null);
+        return this;
+    }
+
+    public void setAccountTransactionHistories(Set<AccountTransactionHistory> accountTransactionHistories) {
+        this.accountTransactionHistories = accountTransactionHistories;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

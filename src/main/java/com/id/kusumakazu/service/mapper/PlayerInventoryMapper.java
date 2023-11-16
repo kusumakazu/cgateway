@@ -9,13 +9,15 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link PlayerInventory} and its DTO {@link PlayerInventoryDTO}.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {ItemObjectMapper.class, PlayerMapper.class})
 public interface PlayerInventoryMapper extends EntityMapper<PlayerInventoryDTO, PlayerInventory> {
 
+    @Mapping(source = "itemObject.id", target = "itemObjectId")
+    @Mapping(source = "player.id", target = "playerId")
+    PlayerInventoryDTO toDto(PlayerInventory playerInventory);
 
-    @Mapping(target = "itemObjects", ignore = true)
-    @Mapping(target = "removeItemObject", ignore = true)
-    @Mapping(target = "playerDetl", ignore = true)
+    @Mapping(source = "itemObjectId", target = "itemObject")
+    @Mapping(source = "playerId", target = "player")
     PlayerInventory toEntity(PlayerInventoryDTO playerInventoryDTO);
 
     default PlayerInventory fromId(Long id) {

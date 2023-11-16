@@ -2,10 +2,6 @@
   "name": "Armor",
   "fields": [
     {
-      "fieldName": "armorName",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "baseDEF",
       "fieldType": "Double"
     },
@@ -31,23 +27,30 @@
   ],
   "relationships": [
     {
-      "relationshipType": "many-to-many",
+      "relationshipType": "many-to-one",
       "otherEntityName": "itemObject",
       "otherEntityRelationshipName": "armor",
       "relationshipName": "itemObject",
-      "otherEntityField": "id",
-      "ownerSide": false
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "armorDetl",
+      "otherEntityRelationshipName": "armor",
+      "relationshipName": "armorDetl",
+      "otherEntityField": "id"
     }
   ],
   "changelogDate": "20231116120224",
   "entityTableName": "armor",
   "dto": "mapstruct",
   "pagination": "no",
-  "service": "serviceClass",
+  "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
-  "clientRootFolder": "",
-  "applications": ["cgatewaysvc"]
+  "clientRootFolder": "cgatewaysvc",
+  "applications": ["cgatewaysvc"],
+  "microserviceName": "cgatewaysvc"
 }

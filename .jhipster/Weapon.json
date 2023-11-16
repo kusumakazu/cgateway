@@ -2,10 +2,6 @@
   "name": "Weapon",
   "fields": [
     {
-      "fieldName": "weaponName",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "baseATK",
       "fieldType": "Double"
     },
@@ -27,23 +23,30 @@
   ],
   "relationships": [
     {
-      "relationshipType": "many-to-many",
+      "relationshipType": "many-to-one",
       "otherEntityName": "itemObject",
       "otherEntityRelationshipName": "weapon",
       "relationshipName": "itemObject",
-      "otherEntityField": "id",
-      "ownerSide": false
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "weaponDetl",
+      "otherEntityRelationshipName": "weapon",
+      "relationshipName": "weaponDetl",
+      "otherEntityField": "id"
     }
   ],
   "changelogDate": "20231116120124",
   "entityTableName": "weapon",
   "dto": "mapstruct",
   "pagination": "no",
-  "service": "serviceClass",
+  "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
-  "clientRootFolder": "",
-  "applications": ["cgatewaysvc"]
+  "clientRootFolder": "cgatewaysvc",
+  "applications": ["cgatewaysvc"],
+  "microserviceName": "cgatewaysvc"
 }

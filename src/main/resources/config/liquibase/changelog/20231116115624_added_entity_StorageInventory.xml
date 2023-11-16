@@ -31,6 +31,12 @@
             <column name="location_coor_b" type="integer">
                 <constraints nullable="true" />
             </column>
+            <column name="item_object_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="player_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

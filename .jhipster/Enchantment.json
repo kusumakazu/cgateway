@@ -1,0 +1,44 @@
+{
+  "name": "Enchantment",
+  "fields": [
+    {
+      "fieldName": "enchantName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "enchantModiferType",
+      "fieldType": "EnchantModifers",
+      "fieldValues": "ATK_BOOST,ATK_PLUS,MAG_PLUS,MAG_BOOST,DEF_PLUS,DEF_BOOST,HP_BOOST,SP_BOOST,HP_PLUS,SP_PLUS"
+    },
+    {
+      "fieldName": "valueModifer",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "weaponDetl",
+      "otherEntityRelationshipName": "enchantment",
+      "relationshipName": "weaponDetl"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "armorDetl",
+      "otherEntityRelationshipName": "enchantment",
+      "relationshipName": "armorDetl"
+    }
+  ],
+  "changelogDate": "20231116133958",
+  "entityTableName": "enchantment",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "cgatewaysvc",
+  "applications": ["cgatewaysvc"],
+  "microserviceName": "cgatewaysvc"
+}

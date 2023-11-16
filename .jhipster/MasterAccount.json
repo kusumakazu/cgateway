@@ -42,17 +42,24 @@
       "otherEntityName": "gameAccount",
       "otherEntityRelationshipName": "masterAccount",
       "relationshipName": "gameAccount"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "accountTransactionHistory",
+      "otherEntityRelationshipName": "masterAccount",
+      "relationshipName": "accountTransactionHistory"
     }
   ],
   "changelogDate": "20231116115724",
   "entityTableName": "master_account",
   "dto": "mapstruct",
   "pagination": "no",
-  "service": "serviceClass",
+  "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
-  "clientRootFolder": "",
-  "applications": ["cgatewaysvc"]
+  "clientRootFolder": "cgatewaysvc",
+  "applications": ["cgatewaysvc"],
+  "microserviceName": "cgatewaysvc"
 }

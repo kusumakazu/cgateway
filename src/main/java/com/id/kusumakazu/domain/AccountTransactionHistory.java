@@ -1,5 +1,6 @@
 package com.id.kusumakazu.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -29,6 +30,10 @@ public class AccountTransactionHistory implements Serializable {
 
     @Column(name = "transaction_detail")
     private String transactionDetail;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "accountTransactionHistories", allowSetters = true)
+    private MasterAccount masterAccount;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -76,6 +81,19 @@ public class AccountTransactionHistory implements Serializable {
 
     public void setTransactionDetail(String transactionDetail) {
         this.transactionDetail = transactionDetail;
+    }
+
+    public MasterAccount getMasterAccount() {
+        return masterAccount;
+    }
+
+    public AccountTransactionHistory masterAccount(MasterAccount masterAccount) {
+        this.masterAccount = masterAccount;
+        return this;
+    }
+
+    public void setMasterAccount(MasterAccount masterAccount) {
+        this.masterAccount = masterAccount;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

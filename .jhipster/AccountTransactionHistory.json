@@ -15,16 +15,25 @@
       "fieldType": "String"
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "masterAccount",
+      "otherEntityRelationshipName": "accountTransactionHistory",
+      "relationshipName": "masterAccount",
+      "otherEntityField": "id"
+    }
+  ],
   "changelogDate": "20231116120724",
   "entityTableName": "account_transaction_history",
   "dto": "mapstruct",
   "pagination": "pagination",
-  "service": "serviceClass",
+  "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
-  "clientRootFolder": "",
-  "applications": ["cgatewaysvc"]
+  "clientRootFolder": "cgatewaysvc",
+  "applications": ["cgatewaysvc"],
+  "microserviceName": "cgatewaysvc"
 }

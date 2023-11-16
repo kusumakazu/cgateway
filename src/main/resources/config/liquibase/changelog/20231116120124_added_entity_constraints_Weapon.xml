@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Weapon.
+    -->
+    <changeSet id="20231116120124-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="item_object_id"
+                                 baseTableName="weapon"
+                                 constraintName="fk_weapon_item_object_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="item_object"/>
+
+        <addForeignKeyConstraint baseColumnNames="weapon_detl_id"
+                                 baseTableName="weapon"
+                                 constraintName="fk_weapon_weapon_detl_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="weapon_detl"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -17,9 +17,9 @@
   "relationships": [
     {
       "relationshipType": "one-to-one",
-      "otherEntityName": "playerDetl",
+      "otherEntityName": "player",
       "otherEntityRelationshipName": "playerCurrency",
-      "relationshipName": "playerDetl",
+      "relationshipName": "player",
       "ownerSide": false
     }
   ],
@@ -27,11 +27,12 @@
   "entityTableName": "player_currency",
   "dto": "mapstruct",
   "pagination": "no",
-  "service": "serviceClass",
+  "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
-  "clientRootFolder": "",
-  "applications": ["cgatewaysvc"]
+  "clientRootFolder": "cgatewaysvc",
+  "applications": ["cgatewaysvc"],
+  "microserviceName": "cgatewaysvc"
 }

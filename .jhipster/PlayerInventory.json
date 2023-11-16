@@ -12,28 +12,30 @@
   ],
   "relationships": [
     {
-      "relationshipType": "one-to-many",
+      "relationshipType": "many-to-one",
       "otherEntityName": "itemObject",
       "otherEntityRelationshipName": "playerInventory",
-      "relationshipName": "itemObject"
+      "relationshipName": "itemObject",
+      "otherEntityField": "id"
     },
     {
-      "relationshipType": "one-to-one",
-      "otherEntityName": "playerDetl",
+      "relationshipType": "many-to-one",
+      "otherEntityName": "player",
       "otherEntityRelationshipName": "playerInventory",
-      "relationshipName": "playerDetl",
-      "ownerSide": false
+      "relationshipName": "player",
+      "otherEntityField": "id"
     }
   ],
   "changelogDate": "20231116120524",
   "entityTableName": "player_inventory",
   "dto": "mapstruct",
   "pagination": "no",
-  "service": "serviceClass",
+  "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
-  "clientRootFolder": "",
-  "applications": ["cgatewaysvc"]
+  "clientRootFolder": "cgatewaysvc",
+  "applications": ["cgatewaysvc"],
+  "microserviceName": "cgatewaysvc"
 }

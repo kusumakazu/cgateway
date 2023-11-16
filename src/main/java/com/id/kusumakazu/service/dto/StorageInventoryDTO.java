@@ -19,6 +19,10 @@ public class StorageInventoryDTO implements Serializable {
 
     private Integer locationCoorB;
 
+
+    private Long itemObjectId;
+
+    private Long playerId;
     
     public Long getId() {
         return id;
@@ -68,6 +72,22 @@ public class StorageInventoryDTO implements Serializable {
         this.locationCoorB = locationCoorB;
     }
 
+    public Long getItemObjectId() {
+        return itemObjectId;
+    }
+
+    public void setItemObjectId(Long itemObjectId) {
+        this.itemObjectId = itemObjectId;
+    }
+
+    public Long getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(Long playerId) {
+        this.playerId = playerId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -95,6 +115,8 @@ public class StorageInventoryDTO implements Serializable {
             ", amount=" + getAmount() +
             ", locationCoorA=" + getLocationCoorA() +
             ", locationCoorB=" + getLocationCoorB() +
+            ", itemObjectId=" + getItemObjectId() +
+            ", playerId=" + getPlayerId() +
             "}";
     }
 }

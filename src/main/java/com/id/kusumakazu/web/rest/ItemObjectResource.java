@@ -80,11 +80,10 @@ public class ItemObjectResource {
     /**
      * {@code GET  /item-objects} : get all the itemObjects.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of itemObjects in body.
      */
     @GetMapping("/item-objects")
-    public List<ItemObjectDTO> getAllItemObjects(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<ItemObjectDTO> getAllItemObjects() {
         log.debug("REST request to get all ItemObjects");
         return itemObjectService.findAll();
     }

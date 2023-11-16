@@ -35,9 +35,6 @@ import com.id.kusumakazu.domain.enumeration.Rarity;
 @WithMockUser
 public class WeaponResourceIT {
 
-    private static final String DEFAULT_WEAPON_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_WEAPON_NAME = "BBBBBBBBBB";
-
     private static final Double DEFAULT_BASE_ATK = 1D;
     private static final Double UPDATED_BASE_ATK = 2D;
 
@@ -75,7 +72,6 @@ public class WeaponResourceIT {
      */
     public static Weapon createEntity(EntityManager em) {
         Weapon weapon = new Weapon()
-            .weaponName(DEFAULT_WEAPON_NAME)
             .baseATK(DEFAULT_BASE_ATK)
             .weaponType(DEFAULT_WEAPON_TYPE)
             .weaponSize(DEFAULT_WEAPON_SIZE)
@@ -90,7 +86,6 @@ public class WeaponResourceIT {
      */
     public static Weapon createUpdatedEntity(EntityManager em) {
         Weapon weapon = new Weapon()
-            .weaponName(UPDATED_WEAPON_NAME)
             .baseATK(UPDATED_BASE_ATK)
             .weaponType(UPDATED_WEAPON_TYPE)
             .weaponSize(UPDATED_WEAPON_SIZE)
@@ -118,7 +113,6 @@ public class WeaponResourceIT {
         List<Weapon> weaponList = weaponRepository.findAll();
         assertThat(weaponList).hasSize(databaseSizeBeforeCreate + 1);
         Weapon testWeapon = weaponList.get(weaponList.size() - 1);
-        assertThat(testWeapon.getWeaponName()).isEqualTo(DEFAULT_WEAPON_NAME);
         assertThat(testWeapon.getBaseATK()).isEqualTo(DEFAULT_BASE_ATK);
         assertThat(testWeapon.getWeaponType()).isEqualTo(DEFAULT_WEAPON_TYPE);
         assertThat(testWeapon.getWeaponSize()).isEqualTo(DEFAULT_WEAPON_SIZE);
@@ -157,7 +151,6 @@ public class WeaponResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(weapon.getId().intValue())))
-            .andExpect(jsonPath("$.[*].weaponName").value(hasItem(DEFAULT_WEAPON_NAME)))
             .andExpect(jsonPath("$.[*].baseATK").value(hasItem(DEFAULT_BASE_ATK.doubleValue())))
             .andExpect(jsonPath("$.[*].weaponType").value(hasItem(DEFAULT_WEAPON_TYPE.toString())))
             .andExpect(jsonPath("$.[*].weaponSize").value(hasItem(DEFAULT_WEAPON_SIZE.toString())))
@@ -175,7 +168,6 @@ public class WeaponResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(weapon.getId().intValue()))
-            .andExpect(jsonPath("$.weaponName").value(DEFAULT_WEAPON_NAME))
             .andExpect(jsonPath("$.baseATK").value(DEFAULT_BASE_ATK.doubleValue()))
             .andExpect(jsonPath("$.weaponType").value(DEFAULT_WEAPON_TYPE.toString()))
             .andExpect(jsonPath("$.weaponSize").value(DEFAULT_WEAPON_SIZE.toString()))
@@ -202,7 +194,6 @@ public class WeaponResourceIT {
         // Disconnect from session so that the updates on updatedWeapon are not directly saved in db
         em.detach(updatedWeapon);
         updatedWeapon
-            .weaponName(UPDATED_WEAPON_NAME)
             .baseATK(UPDATED_BASE_ATK)
             .weaponType(UPDATED_WEAPON_TYPE)
             .weaponSize(UPDATED_WEAPON_SIZE)
@@ -218,7 +209,6 @@ public class WeaponResourceIT {
         List<Weapon> weaponList = weaponRepository.findAll();
         assertThat(weaponList).hasSize(databaseSizeBeforeUpdate);
         Weapon testWeapon = weaponList.get(weaponList.size() - 1);
-        assertThat(testWeapon.getWeaponName()).isEqualTo(UPDATED_WEAPON_NAME);
         assertThat(testWeapon.getBaseATK()).isEqualTo(UPDATED_BASE_ATK);
         assertThat(testWeapon.getWeaponType()).isEqualTo(UPDATED_WEAPON_TYPE);
         assertThat(testWeapon.getWeaponSize()).isEqualTo(UPDATED_WEAPON_SIZE);

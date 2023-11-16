@@ -35,10 +35,6 @@ public class PlayerDetlDTO implements Serializable {
 
     private Double charaStatMP;
 
-
-    private Long playerInventoryId;
-
-    private Long playerCurrencyId;
     
     public Long getId() {
         return id;
@@ -152,22 +148,6 @@ public class PlayerDetlDTO implements Serializable {
         this.charaStatMP = charaStatMP;
     }
 
-    public Long getPlayerInventoryId() {
-        return playerInventoryId;
-    }
-
-    public void setPlayerInventoryId(Long playerInventoryId) {
-        this.playerInventoryId = playerInventoryId;
-    }
-
-    public Long getPlayerCurrencyId() {
-        return playerCurrencyId;
-    }
-
-    public void setPlayerCurrencyId(Long playerCurrencyId) {
-        this.playerCurrencyId = playerCurrencyId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -203,8 +183,6 @@ public class PlayerDetlDTO implements Serializable {
             ", charaBehaviourB=" + getCharaBehaviourB() +
             ", charaStatHP=" + getCharaStatHP() +
             ", charaStatMP=" + getCharaStatMP() +
-            ", playerInventoryId=" + getPlayerInventoryId() +
-            ", playerCurrencyId=" + getPlayerCurrencyId() +
             "}";
     }
 }

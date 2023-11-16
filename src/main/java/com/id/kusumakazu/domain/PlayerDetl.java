@@ -58,14 +58,6 @@ public class PlayerDetl implements Serializable {
     @Column(name = "chara_stat_mp")
     private Double charaStatMP;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private PlayerInventory playerInventory;
-
-    @OneToOne
-    @JoinColumn(unique = true)
-    private PlayerCurrency playerCurrency;
-
     @OneToOne(mappedBy = "playerDetl")
     @JsonIgnore
     private Player player;
@@ -246,32 +238,6 @@ public class PlayerDetl implements Serializable {
 
     public void setCharaStatMP(Double charaStatMP) {
         this.charaStatMP = charaStatMP;
-    }
-
-    public PlayerInventory getPlayerInventory() {
-        return playerInventory;
-    }
-
-    public PlayerDetl playerInventory(PlayerInventory playerInventory) {
-        this.playerInventory = playerInventory;
-        return this;
-    }
-
-    public void setPlayerInventory(PlayerInventory playerInventory) {
-        this.playerInventory = playerInventory;
-    }
-
-    public PlayerCurrency getPlayerCurrency() {
-        return playerCurrency;
-    }
-
-    public PlayerDetl playerCurrency(PlayerCurrency playerCurrency) {
-        this.playerCurrency = playerCurrency;
-        return this;
-    }
-
-    public void setPlayerCurrency(PlayerCurrency playerCurrency) {
-        this.playerCurrency = playerCurrency;
     }
 
     public Player getPlayer() {

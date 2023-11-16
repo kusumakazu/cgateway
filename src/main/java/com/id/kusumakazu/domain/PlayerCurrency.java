@@ -30,7 +30,7 @@ public class PlayerCurrency implements Serializable {
 
     @OneToOne(mappedBy = "playerCurrency")
     @JsonIgnore
-    private PlayerDetl playerDetl;
+    private Player player;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -80,17 +80,17 @@ public class PlayerCurrency implements Serializable {
         this.copper = copper;
     }
 
-    public PlayerDetl getPlayerDetl() {
-        return playerDetl;
+    public Player getPlayer() {
+        return player;
     }
 
-    public PlayerCurrency playerDetl(PlayerDetl playerDetl) {
-        this.playerDetl = playerDetl;
+    public PlayerCurrency player(Player player) {
+        this.player = player;
         return this;
     }
 
-    public void setPlayerDetl(PlayerDetl playerDetl) {
-        this.playerDetl = playerDetl;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

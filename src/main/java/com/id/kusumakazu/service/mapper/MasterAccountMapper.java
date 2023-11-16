@@ -15,6 +15,8 @@ public interface MasterAccountMapper extends EntityMapper<MasterAccountDTO, Mast
 
     @Mapping(target = "gameAccounts", ignore = true)
     @Mapping(target = "removeGameAccount", ignore = true)
+    @Mapping(target = "accountTransactionHistories", ignore = true)
+    @Mapping(target = "removeAccountTransactionHistory", ignore = true)
     MasterAccount toEntity(MasterAccountDTO masterAccountDTO);
 
     default MasterAccount fromId(Long id) {

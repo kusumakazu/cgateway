@@ -26,11 +26,19 @@
     <include file="config/liquibase/changelog/20231116120524_added_entity_PlayerInventory.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20231116120624_added_entity_PlayerClass.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20231116120724_added_entity_AccountTransactionHistory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231116125650_added_entity_WeaponDetl.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231116133658_added_entity_ArmorDetl.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231116133958_added_entity_Enchantment.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20231116115624_added_entity_constraints_StorageInventory.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20231116115824_added_entity_constraints_GameAccount.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20231116115924_added_entity_constraints_Player.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20231116120024_added_entity_constraints_ItemObject.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20231116120324_added_entity_constraints_PlayerDetl.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231116120124_added_entity_constraints_Weapon.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231116120224_added_entity_constraints_Armor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231116120524_added_entity_constraints_PlayerInventory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231116120724_added_entity_constraints_AccountTransactionHistory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231116125650_added_entity_constraints_WeaponDetl.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231116133658_added_entity_constraints_ArmorDetl.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

@@ -55,12 +55,6 @@
             <column name="chara_stat_mp" type="double">
                 <constraints nullable="true" />
             </column>
-            <column name="player_inventory_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_player_detl_player_inventory_id" />
-            </column>
-            <column name="player_currency_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_player_detl_player_currency_id" />
-            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

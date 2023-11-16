@@ -1,11 +1,11 @@
-id;item_name;item_description;obtainedfrom;is_enchant
-1;digital;compressing;MOBDROP;true
-2;next-generation panel Reunion;Venezuela;CRAFTING;true
-3;Bacon invoice;1080p backing up;CRAFTING;false
-4;Monitored;instruction set Shoes utilize;CASHSHOP;true
-5;Strategist synthesizing;capacitor payment;MOBDROP;true
-6;silver;Checking Account salmon;CASHSHOP;true
-7;Architect Frozen Lodge;Monitored;MISC;true
-8;Forward Health TCP;Buckinghamshire Clothing Belize;CRAFTING;false
-9;secured line;Island Realigned;CASHSHOP;true
-10;JBOD;transform Wells;DUNGEONDROP;true
+id;item_name;item_description;obtainedfrom;is_enchant;item_object_type
+1;digital;compressing;MOBDROP;true;ARMOR
+2;Agent target;Integration Implemented;DUNGEONDROP;true;ARMOR
+3;models;Avon;CRAFTING;true;QUESTITEM
+4;payment Louisiana Washington;unleash;CRAFTING;true;MISC
+5;Designer Practical Fresh Mouse application;Crossroad Architect Brooks;DUNGEONDROP;false;MISC
+6;Health TCP Optimization;Clothing Belize Oregon;MISC;false;WEAPON
+7;Chips Fresh;niches Practical Specialist;MISC;false;POTION
+8;open-source;parse Avon;CRAFTING;false;WEAPON
+9;Wooden Bolivia;facilitate white olive;CASHSHOP;false;MISC
+10;indexing;installation Summit models;CASHSHOP;true;MISC

@@ -13,6 +13,10 @@ public class PlayerInventoryDTO implements Serializable {
 
     private Integer amount;
 
+
+    private Long itemObjectId;
+
+    private Long playerId;
     
     public Long getId() {
         return id;
@@ -36,6 +40,22 @@ public class PlayerInventoryDTO implements Serializable {
 
     public void setAmount(Integer amount) {
         this.amount = amount;
+    }
+
+    public Long getItemObjectId() {
+        return itemObjectId;
+    }
+
+    public void setItemObjectId(Long itemObjectId) {
+        this.itemObjectId = itemObjectId;
+    }
+
+    public Long getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(Long playerId) {
+        this.playerId = playerId;
     }
 
     @Override
@@ -62,6 +82,8 @@ public class PlayerInventoryDTO implements Serializable {
             "id=" + getId() +
             ", slot=" + getSlot() +
             ", amount=" + getAmount() +
+            ", itemObjectId=" + getItemObjectId() +
+            ", playerId=" + getPlayerId() +
             "}";
     }
 }

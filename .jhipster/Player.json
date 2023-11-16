@@ -55,6 +55,38 @@
       "ownerSide": true
     },
     {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "playerCurrency",
+      "otherEntityRelationshipName": "player",
+      "relationshipName": "playerCurrency",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "playerInventory",
+      "otherEntityRelationshipName": "player",
+      "relationshipName": "playerInventory"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "storageInventory",
+      "otherEntityRelationshipName": "player",
+      "relationshipName": "storageInventory"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "weaponDetl",
+      "otherEntityRelationshipName": "player",
+      "relationshipName": "weaponDetl"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "armorDetl",
+      "otherEntityRelationshipName": "player",
+      "relationshipName": "armorDetl"
+    },
+    {
       "relationshipType": "many-to-one",
       "otherEntityName": "gameAccount",
       "otherEntityRelationshipName": "player",
@@ -66,11 +98,12 @@
   "entityTableName": "player",
   "dto": "mapstruct",
   "pagination": "no",
-  "service": "serviceClass",
+  "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
-  "clientRootFolder": "",
-  "applications": ["cgatewaysvc"]
+  "clientRootFolder": "cgatewaysvc",
+  "applications": ["cgatewaysvc"],
+  "microserviceName": "cgatewaysvc"
 }

@@ -35,9 +35,6 @@ import com.id.kusumakazu.domain.enumeration.Rarity;
 @WithMockUser
 public class ArmorResourceIT {
 
-    private static final String DEFAULT_ARMOR_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_ARMOR_NAME = "BBBBBBBBBB";
-
     private static final Double DEFAULT_BASE_DEF = 1D;
     private static final Double UPDATED_BASE_DEF = 2D;
 
@@ -78,7 +75,6 @@ public class ArmorResourceIT {
      */
     public static Armor createEntity(EntityManager em) {
         Armor armor = new Armor()
-            .armorName(DEFAULT_ARMOR_NAME)
             .baseDEF(DEFAULT_BASE_DEF)
             .baseHP(DEFAULT_BASE_HP)
             .armorType(DEFAULT_ARMOR_TYPE)
@@ -94,7 +90,6 @@ public class ArmorResourceIT {
      */
     public static Armor createUpdatedEntity(EntityManager em) {
         Armor armor = new Armor()
-            .armorName(UPDATED_ARMOR_NAME)
             .baseDEF(UPDATED_BASE_DEF)
             .baseHP(UPDATED_BASE_HP)
             .armorType(UPDATED_ARMOR_TYPE)
@@ -123,7 +118,6 @@ public class ArmorResourceIT {
         List<Armor> armorList = armorRepository.findAll();
         assertThat(armorList).hasSize(databaseSizeBeforeCreate + 1);
         Armor testArmor = armorList.get(armorList.size() - 1);
-        assertThat(testArmor.getArmorName()).isEqualTo(DEFAULT_ARMOR_NAME);
         assertThat(testArmor.getBaseDEF()).isEqualTo(DEFAULT_BASE_DEF);
         assertThat(testArmor.getBaseHP()).isEqualTo(DEFAULT_BASE_HP);
         assertThat(testArmor.getArmorType()).isEqualTo(DEFAULT_ARMOR_TYPE);
@@ -163,7 +157,6 @@ public class ArmorResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(armor.getId().intValue())))
-            .andExpect(jsonPath("$.[*].armorName").value(hasItem(DEFAULT_ARMOR_NAME)))
             .andExpect(jsonPath("$.[*].baseDEF").value(hasItem(DEFAULT_BASE_DEF.doubleValue())))
             .andExpect(jsonPath("$.[*].baseHP").value(hasItem(DEFAULT_BASE_HP.doubleValue())))
             .andExpect(jsonPath("$.[*].armorType").value(hasItem(DEFAULT_ARMOR_TYPE.toString())))
@@ -182,7 +175,6 @@ public class ArmorResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(armor.getId().intValue()))
-            .andExpect(jsonPath("$.armorName").value(DEFAULT_ARMOR_NAME))
             .andExpect(jsonPath("$.baseDEF").value(DEFAULT_BASE_DEF.doubleValue()))
             .andExpect(jsonPath("$.baseHP").value(DEFAULT_BASE_HP.doubleValue()))
             .andExpect(jsonPath("$.armorType").value(DEFAULT_ARMOR_TYPE.toString()))
@@ -210,7 +202,6 @@ public class ArmorResourceIT {
         // Disconnect from session so that the updates on updatedArmor are not directly saved in db
         em.detach(updatedArmor);
         updatedArmor
-            .armorName(UPDATED_ARMOR_NAME)
             .baseDEF(UPDATED_BASE_DEF)
             .baseHP(UPDATED_BASE_HP)
             .armorType(UPDATED_ARMOR_TYPE)
@@ -227,7 +218,6 @@ public class ArmorResourceIT {
         List<Armor> armorList = armorRepository.findAll();
         assertThat(armorList).hasSize(databaseSizeBeforeUpdate);
         Armor testArmor = armorList.get(armorList.size() - 1);
-        assertThat(testArmor.getArmorName()).isEqualTo(UPDATED_ARMOR_NAME);
         assertThat(testArmor.getBaseDEF()).isEqualTo(UPDATED_BASE_DEF);
         assertThat(testArmor.getBaseHP()).isEqualTo(UPDATED_BASE_HP);
         assertThat(testArmor.getArmorType()).isEqualTo(UPDATED_ARMOR_TYPE);

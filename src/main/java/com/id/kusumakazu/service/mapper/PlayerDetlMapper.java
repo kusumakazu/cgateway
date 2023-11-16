@@ -9,15 +9,10 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link PlayerDetl} and its DTO {@link PlayerDetlDTO}.
  */
-@Mapper(componentModel = "spring", uses = {PlayerInventoryMapper.class, PlayerCurrencyMapper.class})
+@Mapper(componentModel = "spring", uses = {})
 public interface PlayerDetlMapper extends EntityMapper<PlayerDetlDTO, PlayerDetl> {
 
-    @Mapping(source = "playerInventory.id", target = "playerInventoryId")
-    @Mapping(source = "playerCurrency.id", target = "playerCurrencyId")
-    PlayerDetlDTO toDto(PlayerDetl playerDetl);
 
-    @Mapping(source = "playerInventoryId", target = "playerInventory")
-    @Mapping(source = "playerCurrencyId", target = "playerCurrency")
     @Mapping(target = "player", ignore = true)
     PlayerDetl toEntity(PlayerDetlDTO playerDetlDTO);
 

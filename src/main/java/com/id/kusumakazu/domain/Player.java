@@ -7,6 +7,8 @@ import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.id.kusumakazu.domain.enumeration.PlayerType;
 
@@ -59,6 +61,22 @@ public class Player implements Serializable {
     @OneToOne
     @JoinColumn(unique = true)
     private PlayerClass playerClass;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private PlayerCurrency playerCurrency;
+
+    @OneToMany(mappedBy = "player")
+    private Set<PlayerInventory> playerInventories = new HashSet<>();
+
+    @OneToMany(mappedBy = "player")
+    private Set<StorageInventory> storageInventories = new HashSet<>();
+
+    @OneToMany(mappedBy = "player")
+    private Set<WeaponDetl> weaponDetls = new HashSet<>();
+
+    @OneToMany(mappedBy = "player")
+    private Set<ArmorDetl> armorDetls = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties(value = "players", allowSetters = true)
@@ -201,6 +219,119 @@ public class Player implements Serializable {
 
     public void setPlayerClass(PlayerClass playerClass) {
         this.playerClass = playerClass;
+    }
+
+    public PlayerCurrency getPlayerCurrency() {
+        return playerCurrency;
+    }
+
+    public Player playerCurrency(PlayerCurrency playerCurrency) {
+        this.playerCurrency = playerCurrency;
+        return this;
+    }
+
+    public void setPlayerCurrency(PlayerCurrency playerCurrency) {
+        this.playerCurrency = playerCurrency;
+    }
+
+    public Set<PlayerInventory> getPlayerInventories() {
+        return playerInventories;
+    }
+
+    public Player playerInventories(Set<PlayerInventory> playerInventories) {
+        this.playerInventories = playerInventories;
+        return this;
+    }
+
+    public Player addPlayerInventory(PlayerInventory playerInventory) {
+        this.playerInventories.add(playerInventory);
+        playerInventory.setPlayer(this);
+        return this;
+    }
+
+    public Player removePlayerInventory(PlayerInventory playerInventory) {
+        this.playerInventories.remove(playerInventory);
+        playerInventory.setPlayer(null);
+        return this;
+    }
+
+    public void setPlayerInventories(Set<PlayerInventory> playerInventories) {
+        this.playerInventories = playerInventories;
+    }
+
+    public Set<StorageInventory> getStorageInventories() {
+        return storageInventories;
+    }
+
+    public Player storageInventories(Set<StorageInventory> storageInventories) {
+        this.storageInventories = storageInventories;
+        return this;
+    }
+
+    public Player addStorageInventory(StorageInventory storageInventory) {
+        this.storageInventories.add(storageInventory);
+        storageInventory.setPlayer(this);
+        return this;
+    }
+
+    public Player removeStorageInventory(StorageInventory storageInventory) {
+        this.storageInventories.remove(storageInventory);
+        storageInventory.setPlayer(null);
+        return this;
+    }
+
+    public void setStorageInventories(Set<StorageInventory> storageInventories) {
+        this.storageInventories = storageInventories;
+    }
+
+    public Set<WeaponDetl> getWeaponDetls() {
+        return weaponDetls;
+    }
+
+    public Player weaponDetls(Set<WeaponDetl> weaponDetls) {
+        this.weaponDetls = weaponDetls;
+        return this;
+    }
+
+    public Player addWeaponDetl(WeaponDetl weaponDetl) {
+        this.weaponDetls.add(weaponDetl);
+        weaponDetl.setPlayer(this);
+        return this;
+    }
+
+    public Player removeWeaponDetl(WeaponDetl weaponDetl) {
+        this.weaponDetls.remove(weaponDetl);
+        weaponDetl.setPlayer(null);
+        return this;
+    }
+
+    public void setWeaponDetls(Set<WeaponDetl> weaponDetls) {
+        this.weaponDetls = weaponDetls;
+    }
+
+    public Set<ArmorDetl> getArmorDetls() {
+        return armorDetls;
+    }
+
+    public Player armorDetls(Set<ArmorDetl> armorDetls) {
+        this.armorDetls = armorDetls;
+        return this;
+    }
+
+    public Player addArmorDetl(ArmorDetl armorDetl) {
+        this.armorDetls.add(armorDetl);
+        armorDetl.setPlayer(this);
+        return this;
+    }
+
+    public Player removeArmorDetl(ArmorDetl armorDetl) {
+        this.armorDetls.remove(armorDetl);
+        armorDetl.setPlayer(null);
+        return this;
+    }
+
+    public void setArmorDetls(Set<ArmorDetl> armorDetls) {
+        this.armorDetls = armorDetls;
     }
 
     public GameAccount getGameAccount() {

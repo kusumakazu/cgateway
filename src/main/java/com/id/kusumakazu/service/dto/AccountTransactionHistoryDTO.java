@@ -16,6 +16,8 @@ public class AccountTransactionHistoryDTO implements Serializable {
 
     private String transactionDetail;
 
+
+    private Long masterAccountId;
     
     public Long getId() {
         return id;
@@ -49,6 +51,14 @@ public class AccountTransactionHistoryDTO implements Serializable {
         this.transactionDetail = transactionDetail;
     }
 
+    public Long getMasterAccountId() {
+        return masterAccountId;
+    }
+
+    public void setMasterAccountId(Long masterAccountId) {
+        this.masterAccountId = masterAccountId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -74,6 +84,7 @@ public class AccountTransactionHistoryDTO implements Serializable {
             ", transactionCode='" + getTransactionCode() + "'" +
             ", transactionType='" + getTransactionType() + "'" +
             ", transactionDetail='" + getTransactionDetail() + "'" +
+            ", masterAccountId=" + getMasterAccountId() +
             "}";
     }
 }

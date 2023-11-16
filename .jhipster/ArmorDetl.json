@@ -1,0 +1,43 @@
+{
+  "name": "ArmorDetl",
+  "fields": [
+    {
+      "fieldName": "randomStatBonus",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "armor",
+      "otherEntityRelationshipName": "armorDetl",
+      "relationshipName": "armor"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "player",
+      "otherEntityRelationshipName": "armorDetl",
+      "relationshipName": "player",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "enchantment",
+      "otherEntityRelationshipName": "armorDetl",
+      "relationshipName": "enchantment",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20231116133658",
+  "entityTableName": "armor_detl",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "cgatewaysvc",
+  "applications": ["cgatewaysvc"],
+  "microserviceName": "cgatewaysvc"
+}

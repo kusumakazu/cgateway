@@ -16,9 +16,6 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="weapon_name" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="base_atk" type="double">
                 <constraints nullable="true" />
             </column>
@@ -29,6 +26,12 @@
                 <constraints nullable="true" />
             </column>
             <column name="rarity" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="item_object_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="weapon_detl_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
@@ -54,7 +57,6 @@
                   separator=";"
                   tableName="weapon">
             <column name="id" type="numeric"/>
-            <column name="weapon_name" type="string"/>
             <column name="base_atk" type="numeric"/>
             <column name="weapon_type" type="string"/>
             <column name="weapon_size" type="string"/>

@@ -86,9 +86,9 @@ public class PlayerCurrencyResource {
      */
     @GetMapping("/player-currencies")
     public List<PlayerCurrencyDTO> getAllPlayerCurrencies(@RequestParam(required = false) String filter) {
-        if ("playerdetl-is-null".equals(filter)) {
-            log.debug("REST request to get all PlayerCurrencys where playerDetl is null");
-            return playerCurrencyService.findAllWherePlayerDetlIsNull();
+        if ("player-is-null".equals(filter)) {
+            log.debug("REST request to get all PlayerCurrencys where player is null");
+            return playerCurrencyService.findAllWherePlayerIsNull();
         }
         log.debug("REST request to get all PlayerCurrencies");
         return playerCurrencyService.findAll();

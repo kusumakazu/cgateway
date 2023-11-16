@@ -28,10 +28,7 @@
             <column name="is_enchant" type="boolean">
                 <constraints nullable="true" />
             </column>
-            <column name="player_inventory_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-            <column name="storage_inventory_id" type="bigint">
+            <column name="item_object_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
@@ -40,28 +37,6 @@
 
     <changeSet id="20231116120024-1-relations" author="jhipster">
 
-        <createTable tableName="item_object_weapon">
-            <column name="weapon_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="item_object_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="item_object_id, weapon_id" tableName="item_object_weapon"/>
-        
-        <createTable tableName="item_object_armor">
-            <column name="armor_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="item_object_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="item_object_id, armor_id" tableName="item_object_armor"/>
-        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
 
@@ -83,6 +58,7 @@
             <column name="item_description" type="string"/>
             <column name="obtainedfrom" type="string"/>
             <column name="is_enchant" type="boolean"/>
+            <column name="item_object_type" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

@@ -20,6 +20,12 @@
                                  referencedColumnNames="id"
                                  referencedTableName="player_class"/>
 
+        <addForeignKeyConstraint baseColumnNames="player_currency_id"
+                                 baseTableName="player"
+                                 constraintName="fk_player_player_currency_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="player_currency"/>
+
         <addForeignKeyConstraint baseColumnNames="game_account_id"
                                  baseTableName="player"
                                  constraintName="fk_player_game_account_id"

@@ -46,6 +46,9 @@
             <column name="player_class_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_player_player_class_id" />
             </column>
+            <column name="player_currency_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_player_player_currency_id" />
+            </column>
             <column name="game_account_id" type="bigint">
                 <constraints nullable="true" />
             </column>

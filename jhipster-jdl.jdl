@@ -27,9 +27,13 @@ application {
         cacheProvider no
         enableSwaggerCodegen false
         nativeLanguage en
+
     }
+
     dto * with mapstruct
     entities *
+    service * with serviceClass
+    service * with serviceImpl
     paginate AccountTransactionHistory with pagination
 }
 
@@ -94,6 +98,12 @@ enum ClassAtkType {
 enum ObtainFrom {
     CASHSHOP, CRAFTING, MOBDROP, DUNGEONDROP, MISC
 }
+enum ItemObjectType {
+    WEAPON, ARMOR, POTION, QUESTITEM, MISC
+}
+enum EnchantModifers {
+    ATK_BOOST, ATK_PLUS, MAG_PLUS, MAG_BOOST, DEF_PLUS, DEF_BOOST, HP_BOOST, SP_BOOST, HP_PLUS, SP_PLUS
+}
 entity StorageInventory {
     storageInventoryName String
     slot Integer
@@ -131,23 +141,34 @@ entity ItemObject{
     itemDescription String
     obtainedfrom ObtainFrom
     isEnchant Boolean
+    itemObjectType ItemObjectType
+
 }
 entity Weapon {
     //	itemId Long
-    weaponName String
     baseATK Double
     weaponType WeaponType
     weaponSize WeaponSize
     rarity Rarity
 }
+entity ArmorDetl{
+    randomStatBonus Integer
+}
+entity WeaponDetl{
+    randomStatBonus Integer
+}
 entity Armor {
     //	itemId Long
-    armorName String
     baseDEF Double
     baseHP Double
     armorType ArmorType
     armorsize ArmorSize
     rarity Rarity
+}
+entity Enchantment {
+    enchantName String
+    enchantModiferType EnchantModifers
+    valueModifer Integer
 }
 entity PlayerDetl {
 
@@ -194,20 +215,27 @@ entity AccountTransactionHistory {
     transactionType TransactionType
     transactionDetail String
 }
-relationship ManyToMany {
-    ItemObject to Weapon
-    ItemObject to Armor
-}
+
 relationship OneToMany {
+    ItemObject to StorageInventory
+    ItemObject to PlayerInventory
     GameAccount to Player
     MasterAccount to GameAccount
-    PlayerInventory to ItemObject
-    StorageInventory to ItemObject
+    MasterAccount to AccountTransactionHistory
+    ItemObject to Weapon
+    ItemObject to Armor
+    Player to PlayerInventory
+    Player to StorageInventory
+    Player to WeaponDetl
+    Player to ArmorDetl
+    WeaponDetl to Weapon
+    ArmorDetl to Armor
+    Enchantment to WeaponDetl
+    Enchantment to ArmorDetl
 }
 relationship OneToOne {
     Player to PlayerDetl
     Player to PlayerClass
-    PlayerDetl to PlayerInventory
-    PlayerDetl to PlayerCurrency
+    Player to PlayerCurrency
 
 }

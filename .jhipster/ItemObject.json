@@ -17,49 +17,49 @@
     {
       "fieldName": "isEnchant",
       "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "itemObjectType",
+      "fieldType": "ItemObjectType",
+      "fieldValues": "WEAPON,ARMOR,POTION,QUESTITEM,MISC"
     }
   ],
   "relationships": [
     {
-      "relationshipType": "many-to-many",
-      "otherEntityName": "weapon",
-      "otherEntityRelationshipName": "itemObject",
-      "relationshipName": "weapon",
-      "otherEntityField": "id",
-      "ownerSide": true
-    },
-    {
-      "relationshipType": "many-to-many",
-      "otherEntityName": "armor",
-      "otherEntityRelationshipName": "itemObject",
-      "relationshipName": "armor",
-      "otherEntityField": "id",
-      "ownerSide": true
-    },
-    {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "playerInventory",
-      "otherEntityRelationshipName": "itemObject",
-      "relationshipName": "playerInventory",
-      "otherEntityField": "id"
-    },
-    {
-      "relationshipType": "many-to-one",
+      "relationshipType": "one-to-many",
       "otherEntityName": "storageInventory",
       "otherEntityRelationshipName": "itemObject",
-      "relationshipName": "storageInventory",
-      "otherEntityField": "id"
+      "relationshipName": "storageInventory"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "playerInventory",
+      "otherEntityRelationshipName": "itemObject",
+      "relationshipName": "playerInventory"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "weapon",
+      "otherEntityRelationshipName": "itemObject",
+      "relationshipName": "weapon"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "armor",
+      "otherEntityRelationshipName": "itemObject",
+      "relationshipName": "armor"
     }
   ],
   "changelogDate": "20231116120024",
   "entityTableName": "item_object",
   "dto": "mapstruct",
   "pagination": "no",
-  "service": "serviceClass",
+  "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
-  "clientRootFolder": "",
-  "applications": ["cgatewaysvc"]
+  "clientRootFolder": "cgatewaysvc",
+  "applications": ["cgatewaysvc"],
+  "microserviceName": "cgatewaysvc"
 }

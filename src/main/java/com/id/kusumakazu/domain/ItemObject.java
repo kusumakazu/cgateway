@@ -1,6 +1,5 @@
 package com.id.kusumakazu.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -9,6 +8,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.id.kusumakazu.domain.enumeration.ObtainFrom;
+
+import com.id.kusumakazu.domain.enumeration.ItemObjectType;
 
 /**
  * A ItemObject.
@@ -36,25 +37,21 @@ public class ItemObject implements Serializable {
     @Column(name = "is_enchant")
     private Boolean isEnchant;
 
-    @ManyToMany
-    @JoinTable(name = "item_object_weapon",
-               joinColumns = @JoinColumn(name = "item_object_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "weapon_id", referencedColumnName = "id"))
+    @Enumerated(EnumType.STRING)
+    @Column(name = "item_object_type")
+    private ItemObjectType itemObjectType;
+
+    @OneToMany(mappedBy = "itemObject")
+    private Set<StorageInventory> storageInventories = new HashSet<>();
+
+    @OneToMany(mappedBy = "itemObject")
+    private Set<PlayerInventory> playerInventories = new HashSet<>();
+
+    @OneToMany(mappedBy = "itemObject")
     private Set<Weapon> weapons = new HashSet<>();
 
-    @ManyToMany
-    @JoinTable(name = "item_object_armor",
-               joinColumns = @JoinColumn(name = "item_object_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "armor_id", referencedColumnName = "id"))
+    @OneToMany(mappedBy = "itemObject")
     private Set<Armor> armors = new HashSet<>();
-
-    @ManyToOne
-    @JsonIgnoreProperties(value = "itemObjects", allowSetters = true)
-    private PlayerInventory playerInventory;
-
-    @ManyToOne
-    @JsonIgnoreProperties(value = "itemObjects", allowSetters = true)
-    private StorageInventory storageInventory;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -117,6 +114,69 @@ public class ItemObject implements Serializable {
         this.isEnchant = isEnchant;
     }
 
+    public ItemObjectType getItemObjectType() {
+        return itemObjectType;
+    }
+
+    public ItemObject itemObjectType(ItemObjectType itemObjectType) {
+        this.itemObjectType = itemObjectType;
+        return this;
+    }
+
+    public void setItemObjectType(ItemObjectType itemObjectType) {
+        this.itemObjectType = itemObjectType;
+    }
+
+    public Set<StorageInventory> getStorageInventories() {
+        return storageInventories;
+    }
+
+    public ItemObject storageInventories(Set<StorageInventory> storageInventories) {
+        this.storageInventories = storageInventories;
+        return this;
+    }
+
+    public ItemObject addStorageInventory(StorageInventory storageInventory) {
+        this.storageInventories.add(storageInventory);
+        storageInventory.setItemObject(this);
+        return this;
+    }
+
+    public ItemObject removeStorageInventory(StorageInventory storageInventory) {
+        this.storageInventories.remove(storageInventory);
+        storageInventory.setItemObject(null);
+        return this;
+    }
+
+    public void setStorageInventories(Set<StorageInventory> storageInventories) {
+        this.storageInventories = storageInventories;
+    }
+
+    public Set<PlayerInventory> getPlayerInventories() {
+        return playerInventories;
+    }
+
+    public ItemObject playerInventories(Set<PlayerInventory> playerInventories) {
+        this.playerInventories = playerInventories;
+        return this;
+    }
+
+    public ItemObject addPlayerInventory(PlayerInventory playerInventory) {
+        this.playerInventories.add(playerInventory);
+        playerInventory.setItemObject(this);
+        return this;
+    }
+
+    public ItemObject removePlayerInventory(PlayerInventory playerInventory) {
+        this.playerInventories.remove(playerInventory);
+        playerInventory.setItemObject(null);
+        return this;
+    }
+
+    public void setPlayerInventories(Set<PlayerInventory> playerInventories) {
+        this.playerInventories = playerInventories;
+    }
+
     public Set<Weapon> getWeapons() {
         return weapons;
     }
@@ -128,13 +188,13 @@ public class ItemObject implements Serializable {
 
     public ItemObject addWeapon(Weapon weapon) {
         this.weapons.add(weapon);
-        weapon.getItemObjects().add(this);
+        weapon.setItemObject(this);
         return this;
     }
 
     public ItemObject removeWeapon(Weapon weapon) {
         this.weapons.remove(weapon);
-        weapon.getItemObjects().remove(this);
+        weapon.setItemObject(null);
         return this;
     }
 
@@ -153,44 +213,18 @@ public class ItemObject implements Serializable {
 
     public ItemObject addArmor(Armor armor) {
         this.armors.add(armor);
-        armor.getItemObjects().add(this);
+        armor.setItemObject(this);
         return this;
     }
 
     public ItemObject removeArmor(Armor armor) {
         this.armors.remove(armor);
-        armor.getItemObjects().remove(this);
+        armor.setItemObject(null);
         return this;
     }
 
     public void setArmors(Set<Armor> armors) {
         this.armors = armors;
-    }
-
-    public PlayerInventory getPlayerInventory() {
-        return playerInventory;
-    }
-
-    public ItemObject playerInventory(PlayerInventory playerInventory) {
-        this.playerInventory = playerInventory;
-        return this;
-    }
-
-    public void setPlayerInventory(PlayerInventory playerInventory) {
-        this.playerInventory = playerInventory;
-    }
-
-    public StorageInventory getStorageInventory() {
-        return storageInventory;
-    }
-
-    public ItemObject storageInventory(StorageInventory storageInventory) {
-        this.storageInventory = storageInventory;
-        return this;
-    }
-
-    public void setStorageInventory(StorageInventory storageInventory) {
-        this.storageInventory = storageInventory;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -219,6 +253,7 @@ public class ItemObject implements Serializable {
             ", itemDescription='" + getItemDescription() + "'" +
             ", obtainedfrom='" + getObtainedfrom() + "'" +
             ", isEnchant='" + isIsEnchant() + "'" +
+            ", itemObjectType='" + getItemObjectType() + "'" +
             "}";
     }
 }
