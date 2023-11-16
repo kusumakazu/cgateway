@@ -1,7 +1,8 @@
-/////////////////////////////////
-// game service idea for 2d game
-// created by : kusumakazu
-/////////////////////////////////
+/////////////////////////////////////////
+// game service idea for 2d game       //
+// created by : kusumakazu             //
+// FIX INITIAL STRUCTURE AT 16-11-2023 //
+/////////////////////////////////////////
 DEFAULT_MIN_LENGTH = 4
 DEFAULT_MAX_LENGTH = 64
 URL_MAX_LENGTH = 2048
