@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.id.kusumakazu.domain.enumeration.WeaponType;
 
@@ -25,6 +27,12 @@ public class Weapon implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "weapon_name")
+    private String weaponName;
+
+    @Column(name = "weapon_description")
+    private String weaponDescription;
+
     @Column(name = "base_atk")
     private Double baseATK;
 
@@ -40,13 +48,12 @@ public class Weapon implements Serializable {
     @Column(name = "rarity")
     private Rarity rarity;
 
-    @ManyToOne
-    @JsonIgnoreProperties(value = "weapons", allowSetters = true)
-    private ItemObject itemObject;
+    @OneToMany(mappedBy = "weapon")
+    private Set<WeaponDetl> weaponDetls = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties(value = "weapons", allowSetters = true)
-    private WeaponDetl weaponDetl;
+    private ItemObject itemObject;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -55,6 +62,32 @@ public class Weapon implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getWeaponName() {
+        return weaponName;
+    }
+
+    public Weapon weaponName(String weaponName) {
+        this.weaponName = weaponName;
+        return this;
+    }
+
+    public void setWeaponName(String weaponName) {
+        this.weaponName = weaponName;
+    }
+
+    public String getWeaponDescription() {
+        return weaponDescription;
+    }
+
+    public Weapon weaponDescription(String weaponDescription) {
+        this.weaponDescription = weaponDescription;
+        return this;
+    }
+
+    public void setWeaponDescription(String weaponDescription) {
+        this.weaponDescription = weaponDescription;
     }
 
     public Double getBaseATK() {
@@ -109,6 +142,31 @@ public class Weapon implements Serializable {
         this.rarity = rarity;
     }
 
+    public Set<WeaponDetl> getWeaponDetls() {
+        return weaponDetls;
+    }
+
+    public Weapon weaponDetls(Set<WeaponDetl> weaponDetls) {
+        this.weaponDetls = weaponDetls;
+        return this;
+    }
+
+    public Weapon addWeaponDetl(WeaponDetl weaponDetl) {
+        this.weaponDetls.add(weaponDetl);
+        weaponDetl.setWeapon(this);
+        return this;
+    }
+
+    public Weapon removeWeaponDetl(WeaponDetl weaponDetl) {
+        this.weaponDetls.remove(weaponDetl);
+        weaponDetl.setWeapon(null);
+        return this;
+    }
+
+    public void setWeaponDetls(Set<WeaponDetl> weaponDetls) {
+        this.weaponDetls = weaponDetls;
+    }
+
     public ItemObject getItemObject() {
         return itemObject;
     }
@@ -120,19 +178,6 @@ public class Weapon implements Serializable {
 
     public void setItemObject(ItemObject itemObject) {
         this.itemObject = itemObject;
-    }
-
-    public WeaponDetl getWeaponDetl() {
-        return weaponDetl;
-    }
-
-    public Weapon weaponDetl(WeaponDetl weaponDetl) {
-        this.weaponDetl = weaponDetl;
-        return this;
-    }
-
-    public void setWeaponDetl(WeaponDetl weaponDetl) {
-        this.weaponDetl = weaponDetl;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -157,6 +202,8 @@ public class Weapon implements Serializable {
     public String toString() {
         return "Weapon{" +
             "id=" + getId() +
+            ", weaponName='" + getWeaponName() + "'" +
+            ", weaponDescription='" + getWeaponDescription() + "'" +
             ", baseATK=" + getBaseATK() +
             ", weaponType='" + getWeaponType() + "'" +
             ", weaponSize='" + getWeaponSize() + "'" +

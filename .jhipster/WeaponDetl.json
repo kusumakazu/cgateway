@@ -8,16 +8,17 @@
   ],
   "relationships": [
     {
-      "relationshipType": "one-to-many",
-      "otherEntityName": "weapon",
-      "otherEntityRelationshipName": "weaponDetl",
-      "relationshipName": "weapon"
-    },
-    {
       "relationshipType": "many-to-one",
       "otherEntityName": "player",
       "otherEntityRelationshipName": "weaponDetl",
       "relationshipName": "player",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "weapon",
+      "otherEntityRelationshipName": "weaponDetl",
+      "relationshipName": "weapon",
       "otherEntityField": "id"
     },
     {

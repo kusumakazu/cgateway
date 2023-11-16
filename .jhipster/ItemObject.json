@@ -2,14 +2,6 @@
   "name": "ItemObject",
   "fields": [
     {
-      "fieldName": "itemName",
-      "fieldType": "String"
-    },
-    {
-      "fieldName": "itemDescription",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "obtainedfrom",
       "fieldType": "ObtainFrom",
       "fieldValues": "CASHSHOP,CRAFTING,MOBDROP,DUNGEONDROP,MISC"

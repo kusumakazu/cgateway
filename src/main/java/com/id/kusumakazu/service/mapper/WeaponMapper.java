@@ -9,15 +9,15 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Weapon} and its DTO {@link WeaponDTO}.
  */
-@Mapper(componentModel = "spring", uses = {ItemObjectMapper.class, WeaponDetlMapper.class})
+@Mapper(componentModel = "spring", uses = {ItemObjectMapper.class})
 public interface WeaponMapper extends EntityMapper<WeaponDTO, Weapon> {
 
     @Mapping(source = "itemObject.id", target = "itemObjectId")
-    @Mapping(source = "weaponDetl.id", target = "weaponDetlId")
     WeaponDTO toDto(Weapon weapon);
 
+    @Mapping(target = "weaponDetls", ignore = true)
+    @Mapping(target = "removeWeaponDetl", ignore = true)
     @Mapping(source = "itemObjectId", target = "itemObject")
-    @Mapping(source = "weaponDetlId", target = "weaponDetl")
     Weapon toEntity(WeaponDTO weaponDTO);
 
     default Weapon fromId(Long id) {

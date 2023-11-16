@@ -2,6 +2,14 @@
   "name": "Armor",
   "fields": [
     {
+      "fieldName": "armorName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "armorDescription",
+      "fieldType": "String"
+    },
+    {
       "fieldName": "baseDEF",
       "fieldType": "Double"
     },
@@ -27,17 +35,16 @@
   ],
   "relationships": [
     {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "armorDetl",
+      "otherEntityRelationshipName": "armor",
+      "relationshipName": "armorDetl"
+    },
+    {
       "relationshipType": "many-to-one",
       "otherEntityName": "itemObject",
       "otherEntityRelationshipName": "armor",
       "relationshipName": "itemObject",
-      "otherEntityField": "id"
-    },
-    {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "armorDetl",
-      "otherEntityRelationshipName": "armor",
-      "relationshipName": "armorDetl",
       "otherEntityField": "id"
     }
   ],

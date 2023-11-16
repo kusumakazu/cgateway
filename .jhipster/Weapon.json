@@ -2,6 +2,14 @@
   "name": "Weapon",
   "fields": [
     {
+      "fieldName": "weaponName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "weaponDescription",
+      "fieldType": "String"
+    },
+    {
       "fieldName": "baseATK",
       "fieldType": "Double"
     },
@@ -23,17 +31,16 @@
   ],
   "relationships": [
     {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "weaponDetl",
+      "otherEntityRelationshipName": "weapon",
+      "relationshipName": "weaponDetl"
+    },
+    {
       "relationshipType": "many-to-one",
       "otherEntityName": "itemObject",
       "otherEntityRelationshipName": "weapon",
       "relationshipName": "itemObject",
-      "otherEntityField": "id"
-    },
-    {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "weaponDetl",
-      "otherEntityRelationshipName": "weapon",
-      "relationshipName": "weaponDetl",
       "otherEntityField": "id"
     }
   ],

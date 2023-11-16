@@ -22,6 +22,9 @@
             <column name="player_id" type="bigint">
                 <constraints nullable="true" />
             </column>
+            <column name="armor_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <column name="enchantment_id" type="bigint">
                 <constraints nullable="true" />
             </column>

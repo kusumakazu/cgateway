@@ -24,12 +24,6 @@ public class ItemObject implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "item_name")
-    private String itemName;
-
-    @Column(name = "item_description")
-    private String itemDescription;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "obtainedfrom")
     private ObtainFrom obtainedfrom;
@@ -60,32 +54,6 @@ public class ItemObject implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getItemName() {
-        return itemName;
-    }
-
-    public ItemObject itemName(String itemName) {
-        this.itemName = itemName;
-        return this;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
-    public String getItemDescription() {
-        return itemDescription;
-    }
-
-    public ItemObject itemDescription(String itemDescription) {
-        this.itemDescription = itemDescription;
-        return this;
-    }
-
-    public void setItemDescription(String itemDescription) {
-        this.itemDescription = itemDescription;
     }
 
     public ObtainFrom getObtainedfrom() {
@@ -249,8 +217,6 @@ public class ItemObject implements Serializable {
     public String toString() {
         return "ItemObject{" +
             "id=" + getId() +
-            ", itemName='" + getItemName() + "'" +
-            ", itemDescription='" + getItemDescription() + "'" +
             ", obtainedfrom='" + getObtainedfrom() + "'" +
             ", isEnchant='" + isIsEnchant() + "'" +
             ", itemObjectType='" + getItemObjectType() + "'" +

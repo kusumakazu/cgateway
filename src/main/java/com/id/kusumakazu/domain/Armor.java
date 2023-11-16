@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.id.kusumakazu.domain.enumeration.ArmorType;
 
@@ -25,6 +27,12 @@ public class Armor implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "armor_name")
+    private String armorName;
+
+    @Column(name = "armor_description")
+    private String armorDescription;
+
     @Column(name = "base_def")
     private Double baseDEF;
 
@@ -43,13 +51,12 @@ public class Armor implements Serializable {
     @Column(name = "rarity")
     private Rarity rarity;
 
-    @ManyToOne
-    @JsonIgnoreProperties(value = "armors", allowSetters = true)
-    private ItemObject itemObject;
+    @OneToMany(mappedBy = "armor")
+    private Set<ArmorDetl> armorDetls = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties(value = "armors", allowSetters = true)
-    private ArmorDetl armorDetl;
+    private ItemObject itemObject;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -58,6 +65,32 @@ public class Armor implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getArmorName() {
+        return armorName;
+    }
+
+    public Armor armorName(String armorName) {
+        this.armorName = armorName;
+        return this;
+    }
+
+    public void setArmorName(String armorName) {
+        this.armorName = armorName;
+    }
+
+    public String getArmorDescription() {
+        return armorDescription;
+    }
+
+    public Armor armorDescription(String armorDescription) {
+        this.armorDescription = armorDescription;
+        return this;
+    }
+
+    public void setArmorDescription(String armorDescription) {
+        this.armorDescription = armorDescription;
     }
 
     public Double getBaseDEF() {
@@ -125,6 +158,31 @@ public class Armor implements Serializable {
         this.rarity = rarity;
     }
 
+    public Set<ArmorDetl> getArmorDetls() {
+        return armorDetls;
+    }
+
+    public Armor armorDetls(Set<ArmorDetl> armorDetls) {
+        this.armorDetls = armorDetls;
+        return this;
+    }
+
+    public Armor addArmorDetl(ArmorDetl armorDetl) {
+        this.armorDetls.add(armorDetl);
+        armorDetl.setArmor(this);
+        return this;
+    }
+
+    public Armor removeArmorDetl(ArmorDetl armorDetl) {
+        this.armorDetls.remove(armorDetl);
+        armorDetl.setArmor(null);
+        return this;
+    }
+
+    public void setArmorDetls(Set<ArmorDetl> armorDetls) {
+        this.armorDetls = armorDetls;
+    }
+
     public ItemObject getItemObject() {
         return itemObject;
     }
@@ -136,19 +194,6 @@ public class Armor implements Serializable {
 
     public void setItemObject(ItemObject itemObject) {
         this.itemObject = itemObject;
-    }
-
-    public ArmorDetl getArmorDetl() {
-        return armorDetl;
-    }
-
-    public Armor armorDetl(ArmorDetl armorDetl) {
-        this.armorDetl = armorDetl;
-        return this;
-    }
-
-    public void setArmorDetl(ArmorDetl armorDetl) {
-        this.armorDetl = armorDetl;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -173,6 +218,8 @@ public class Armor implements Serializable {
     public String toString() {
         return "Armor{" +
             "id=" + getId() +
+            ", armorName='" + getArmorName() + "'" +
+            ", armorDescription='" + getArmorDescription() + "'" +
             ", baseDEF=" + getBaseDEF() +
             ", baseHP=" + getBaseHP() +
             ", armorType='" + getArmorType() + "'" +

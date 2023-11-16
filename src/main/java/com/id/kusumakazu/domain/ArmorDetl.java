@@ -5,8 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A ArmorDetl.
@@ -24,12 +22,13 @@ public class ArmorDetl implements Serializable {
     @Column(name = "random_stat_bonus")
     private Integer randomStatBonus;
 
-    @OneToMany(mappedBy = "armorDetl")
-    private Set<Armor> armors = new HashSet<>();
-
     @ManyToOne
     @JsonIgnoreProperties(value = "armorDetls", allowSetters = true)
     private Player player;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "armorDetls", allowSetters = true)
+    private Armor armor;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "armorDetls", allowSetters = true)
@@ -57,31 +56,6 @@ public class ArmorDetl implements Serializable {
         this.randomStatBonus = randomStatBonus;
     }
 
-    public Set<Armor> getArmors() {
-        return armors;
-    }
-
-    public ArmorDetl armors(Set<Armor> armors) {
-        this.armors = armors;
-        return this;
-    }
-
-    public ArmorDetl addArmor(Armor armor) {
-        this.armors.add(armor);
-        armor.setArmorDetl(this);
-        return this;
-    }
-
-    public ArmorDetl removeArmor(Armor armor) {
-        this.armors.remove(armor);
-        armor.setArmorDetl(null);
-        return this;
-    }
-
-    public void setArmors(Set<Armor> armors) {
-        this.armors = armors;
-    }
-
     public Player getPlayer() {
         return player;
     }
@@ -93,6 +67,19 @@ public class ArmorDetl implements Serializable {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    public Armor getArmor() {
+        return armor;
+    }
+
+    public ArmorDetl armor(Armor armor) {
+        this.armor = armor;
+        return this;
+    }
+
+    public void setArmor(Armor armor) {
+        this.armor = armor;
     }
 
     public Enchantment getEnchantment() {

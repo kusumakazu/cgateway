@@ -1,11 +1,11 @@
-id;item_name;item_description;obtainedfrom;is_enchant;item_object_type
-1;digital;compressing;MOBDROP;true;ARMOR
-2;Agent target;Integration Implemented;DUNGEONDROP;true;ARMOR
-3;models;Avon;CRAFTING;true;QUESTITEM
-4;payment Louisiana Washington;unleash;CRAFTING;true;MISC
-5;Designer Practical Fresh Mouse application;Crossroad Architect Brooks;DUNGEONDROP;false;MISC
-6;Health TCP Optimization;Clothing Belize Oregon;MISC;false;WEAPON
-7;Chips Fresh;niches Practical Specialist;MISC;false;POTION
-8;open-source;parse Avon;CRAFTING;false;WEAPON
-9;Wooden Bolivia;facilitate white olive;CASHSHOP;false;MISC
-10;indexing;installation Summit models;CASHSHOP;true;MISC
+id;obtainedfrom;is_enchant;item_object_type
+1;CASHSHOP;true;WEAPON
+2;DUNGEONDROP;false;MISC
+3;CRAFTING;false;QUESTITEM
+4;MOBDROP;false;POTION
+5;MISC;true;WEAPON
+6;DUNGEONDROP;true;MISC
+7;CRAFTING;false;POTION
+8;CASHSHOP;true;WEAPON
+9;DUNGEONDROP;false;MISC
+10;DUNGEONDROP;false;POTION

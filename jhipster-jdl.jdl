@@ -137,9 +137,7 @@ entity Player {
     lastLogin Instant
 
 }
-entity ItemObject{
-    itemName String
-    itemDescription String
+entity ItemObject {
     obtainedfrom ObtainFrom
     isEnchant Boolean
     itemObjectType ItemObjectType
@@ -147,6 +145,8 @@ entity ItemObject{
 }
 entity Weapon {
     //	itemId Long
+    weaponName String
+    weaponDescription String
     baseATK Double
     weaponType WeaponType
     weaponSize WeaponSize
@@ -159,7 +159,8 @@ entity WeaponDetl{
     randomStatBonus Integer
 }
 entity Armor {
-    //	itemId Long
+    armorName String
+    armorDescription String
     baseDEF Double
     baseHP Double
     armorType ArmorType
@@ -229,8 +230,8 @@ relationship OneToMany {
     Player to StorageInventory
     Player to WeaponDetl
     Player to ArmorDetl
-    WeaponDetl to Weapon
-    ArmorDetl to Armor
+    Weapon to WeaponDetl
+    Armor to ArmorDetl
     Enchantment to WeaponDetl
     Enchantment to ArmorDetl
 }

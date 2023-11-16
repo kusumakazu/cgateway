@@ -11,10 +11,6 @@ public class ItemObjectDTO implements Serializable {
     
     private Long id;
 
-    private String itemName;
-
-    private String itemDescription;
-
     private ObtainFrom obtainedfrom;
 
     private Boolean isEnchant;
@@ -28,22 +24,6 @@ public class ItemObjectDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getItemName() {
-        return itemName;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
-    public String getItemDescription() {
-        return itemDescription;
-    }
-
-    public void setItemDescription(String itemDescription) {
-        this.itemDescription = itemDescription;
     }
 
     public ObtainFrom getObtainedfrom() {
@@ -92,8 +72,6 @@ public class ItemObjectDTO implements Serializable {
     public String toString() {
         return "ItemObjectDTO{" +
             "id=" + getId() +
-            ", itemName='" + getItemName() + "'" +
-            ", itemDescription='" + getItemDescription() + "'" +
             ", obtainedfrom='" + getObtainedfrom() + "'" +
             ", isEnchant='" + isIsEnchant() + "'" +
             ", itemObjectType='" + getItemObjectType() + "'" +

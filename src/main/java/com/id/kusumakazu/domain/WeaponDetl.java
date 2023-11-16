@@ -5,8 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A WeaponDetl.
@@ -24,12 +22,13 @@ public class WeaponDetl implements Serializable {
     @Column(name = "random_stat_bonus")
     private Integer randomStatBonus;
 
-    @OneToMany(mappedBy = "weaponDetl")
-    private Set<Weapon> weapons = new HashSet<>();
-
     @ManyToOne
     @JsonIgnoreProperties(value = "weaponDetls", allowSetters = true)
     private Player player;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "weaponDetls", allowSetters = true)
+    private Weapon weapon;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "weaponDetls", allowSetters = true)
@@ -57,31 +56,6 @@ public class WeaponDetl implements Serializable {
         this.randomStatBonus = randomStatBonus;
     }
 
-    public Set<Weapon> getWeapons() {
-        return weapons;
-    }
-
-    public WeaponDetl weapons(Set<Weapon> weapons) {
-        this.weapons = weapons;
-        return this;
-    }
-
-    public WeaponDetl addWeapon(Weapon weapon) {
-        this.weapons.add(weapon);
-        weapon.setWeaponDetl(this);
-        return this;
-    }
-
-    public WeaponDetl removeWeapon(Weapon weapon) {
-        this.weapons.remove(weapon);
-        weapon.setWeaponDetl(null);
-        return this;
-    }
-
-    public void setWeapons(Set<Weapon> weapons) {
-        this.weapons = weapons;
-    }
-
     public Player getPlayer() {
         return player;
     }
@@ -93,6 +67,19 @@ public class WeaponDetl implements Serializable {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public WeaponDetl weapon(Weapon weapon) {
+        this.weapon = weapon;
+        return this;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
 
     public Enchantment getEnchantment() {

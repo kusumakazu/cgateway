@@ -1,11 +1,11 @@
-id;base_atk;weapon_type;weapon_size;rarity
-1;60735;DAGGER;HEAVY;MYTHIC
-2;50478;DAGGER;SHORT;EPIC
-3;64213;GREATSWORD;MEDIUM;EPIC
-4;76487;WAND;SHORT;MYTHIC
-5;90318;STAFF;SHORT;EPIC
-6;23847;CROSSBOW;HEAVY;MYTHIC
-7;19988;STAFF;SHORT;LEGENDAY
-8;52443;STAFF;HEAVY;EPIC
-9;15655;DAGGER;SHORT;RARE
-10;89472;CROSSBOW;MEDIUM;MYTHIC
+id;weapon_name;weapon_description;base_atk;weapon_type;weapon_size;rarity
+1;repurpose global;quantifying Mouse;51401;WAND;MEDIUM;RARE
+2;SDR USB Cote d'Ivoire;Forward Port;87891;SWORD;MEDIUM;MYTHIC
+3;optical;override;7537;STAFF;MEDIUM;LEGENDAY
+4;Cambridgeshire PNG olive;capacity multi-byte;23847;CROSSBOW;HEAVY;MYTHIC
+5;Plains;system Granite Creative;22081;GREATSWORD;MEDIUM;EPIC
+6;Intelligent Ball;Greens white alliance;55458;GREATSWORD;HEAVY;MYTHIC
+7;Networked repurpose Comoro Franc;Fresh Health Investment Account;62853;GREATSWORD;HEAVY;EPIC
+8;orange Practical Berkshire;digital;5147;CROSSBOW;MEDIUM;EPIC
+9;invoice Profit-focused;JBOD;74717;WAND;SHORT;MYTHIC
+10;logistical granular grid-enabled;Paradigm;91278;CROSSBOW;HEAVY;EPIC

@@ -16,6 +16,12 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="armor_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="armor_description" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="base_def" type="double">
                 <constraints nullable="true" />
             </column>
@@ -32,9 +38,6 @@
                 <constraints nullable="true" />
             </column>
             <column name="item_object_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-            <column name="armor_detl_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
@@ -60,6 +63,8 @@
                   separator=";"
                   tableName="armor">
             <column name="id" type="numeric"/>
+            <column name="armor_name" type="string"/>
+            <column name="armor_description" type="string"/>
             <column name="base_def" type="numeric"/>
             <column name="base_hp" type="numeric"/>
             <column name="armor_type" type="string"/>

@@ -34,12 +34,6 @@ import com.id.kusumakazu.domain.enumeration.ItemObjectType;
 @WithMockUser
 public class ItemObjectResourceIT {
 
-    private static final String DEFAULT_ITEM_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_ITEM_NAME = "BBBBBBBBBB";
-
-    private static final String DEFAULT_ITEM_DESCRIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_ITEM_DESCRIPTION = "BBBBBBBBBB";
-
     private static final ObtainFrom DEFAULT_OBTAINEDFROM = ObtainFrom.CASHSHOP;
     private static final ObtainFrom UPDATED_OBTAINEDFROM = ObtainFrom.CRAFTING;
 
@@ -74,8 +68,6 @@ public class ItemObjectResourceIT {
      */
     public static ItemObject createEntity(EntityManager em) {
         ItemObject itemObject = new ItemObject()
-            .itemName(DEFAULT_ITEM_NAME)
-            .itemDescription(DEFAULT_ITEM_DESCRIPTION)
             .obtainedfrom(DEFAULT_OBTAINEDFROM)
             .isEnchant(DEFAULT_IS_ENCHANT)
             .itemObjectType(DEFAULT_ITEM_OBJECT_TYPE);
@@ -89,8 +81,6 @@ public class ItemObjectResourceIT {
      */
     public static ItemObject createUpdatedEntity(EntityManager em) {
         ItemObject itemObject = new ItemObject()
-            .itemName(UPDATED_ITEM_NAME)
-            .itemDescription(UPDATED_ITEM_DESCRIPTION)
             .obtainedfrom(UPDATED_OBTAINEDFROM)
             .isEnchant(UPDATED_IS_ENCHANT)
             .itemObjectType(UPDATED_ITEM_OBJECT_TYPE);
@@ -117,8 +107,6 @@ public class ItemObjectResourceIT {
         List<ItemObject> itemObjectList = itemObjectRepository.findAll();
         assertThat(itemObjectList).hasSize(databaseSizeBeforeCreate + 1);
         ItemObject testItemObject = itemObjectList.get(itemObjectList.size() - 1);
-        assertThat(testItemObject.getItemName()).isEqualTo(DEFAULT_ITEM_NAME);
-        assertThat(testItemObject.getItemDescription()).isEqualTo(DEFAULT_ITEM_DESCRIPTION);
         assertThat(testItemObject.getObtainedfrom()).isEqualTo(DEFAULT_OBTAINEDFROM);
         assertThat(testItemObject.isIsEnchant()).isEqualTo(DEFAULT_IS_ENCHANT);
         assertThat(testItemObject.getItemObjectType()).isEqualTo(DEFAULT_ITEM_OBJECT_TYPE);
@@ -156,8 +144,6 @@ public class ItemObjectResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(itemObject.getId().intValue())))
-            .andExpect(jsonPath("$.[*].itemName").value(hasItem(DEFAULT_ITEM_NAME)))
-            .andExpect(jsonPath("$.[*].itemDescription").value(hasItem(DEFAULT_ITEM_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].obtainedfrom").value(hasItem(DEFAULT_OBTAINEDFROM.toString())))
             .andExpect(jsonPath("$.[*].isEnchant").value(hasItem(DEFAULT_IS_ENCHANT.booleanValue())))
             .andExpect(jsonPath("$.[*].itemObjectType").value(hasItem(DEFAULT_ITEM_OBJECT_TYPE.toString())));
@@ -174,8 +160,6 @@ public class ItemObjectResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(itemObject.getId().intValue()))
-            .andExpect(jsonPath("$.itemName").value(DEFAULT_ITEM_NAME))
-            .andExpect(jsonPath("$.itemDescription").value(DEFAULT_ITEM_DESCRIPTION))
             .andExpect(jsonPath("$.obtainedfrom").value(DEFAULT_OBTAINEDFROM.toString()))
             .andExpect(jsonPath("$.isEnchant").value(DEFAULT_IS_ENCHANT.booleanValue()))
             .andExpect(jsonPath("$.itemObjectType").value(DEFAULT_ITEM_OBJECT_TYPE.toString()));
@@ -201,8 +185,6 @@ public class ItemObjectResourceIT {
         // Disconnect from session so that the updates on updatedItemObject are not directly saved in db
         em.detach(updatedItemObject);
         updatedItemObject
-            .itemName(UPDATED_ITEM_NAME)
-            .itemDescription(UPDATED_ITEM_DESCRIPTION)
             .obtainedfrom(UPDATED_OBTAINEDFROM)
             .isEnchant(UPDATED_IS_ENCHANT)
             .itemObjectType(UPDATED_ITEM_OBJECT_TYPE);
@@ -217,8 +199,6 @@ public class ItemObjectResourceIT {
         List<ItemObject> itemObjectList = itemObjectRepository.findAll();
         assertThat(itemObjectList).hasSize(databaseSizeBeforeUpdate);
         ItemObject testItemObject = itemObjectList.get(itemObjectList.size() - 1);
-        assertThat(testItemObject.getItemName()).isEqualTo(UPDATED_ITEM_NAME);
-        assertThat(testItemObject.getItemDescription()).isEqualTo(UPDATED_ITEM_DESCRIPTION);
         assertThat(testItemObject.getObtainedfrom()).isEqualTo(UPDATED_OBTAINEDFROM);
         assertThat(testItemObject.isIsEnchant()).isEqualTo(UPDATED_IS_ENCHANT);
         assertThat(testItemObject.getItemObjectType()).isEqualTo(UPDATED_ITEM_OBJECT_TYPE);

@@ -14,6 +14,8 @@ public class WeaponDetlDTO implements Serializable {
 
     private Long playerId;
 
+    private Long weaponId;
+
     private Long enchantmentId;
     
     public Long getId() {
@@ -38,6 +40,14 @@ public class WeaponDetlDTO implements Serializable {
 
     public void setPlayerId(Long playerId) {
         this.playerId = playerId;
+    }
+
+    public Long getWeaponId() {
+        return weaponId;
+    }
+
+    public void setWeaponId(Long weaponId) {
+        this.weaponId = weaponId;
     }
 
     public Long getEnchantmentId() {
@@ -72,6 +82,7 @@ public class WeaponDetlDTO implements Serializable {
             "id=" + getId() +
             ", randomStatBonus=" + getRandomStatBonus() +
             ", playerId=" + getPlayerId() +
+            ", weaponId=" + getWeaponId() +
             ", enchantmentId=" + getEnchantmentId() +
             "}";
     }

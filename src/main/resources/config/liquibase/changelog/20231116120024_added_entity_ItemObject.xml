@@ -16,12 +16,6 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="item_name" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="item_description" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="obtainedfrom" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -54,8 +48,6 @@
                   separator=";"
                   tableName="item_object">
             <column name="id" type="numeric"/>
-            <column name="item_name" type="string"/>
-            <column name="item_description" type="string"/>
             <column name="obtainedfrom" type="string"/>
             <column name="is_enchant" type="boolean"/>
             <column name="item_object_type" type="string"/>

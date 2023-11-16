@@ -97,13 +97,8 @@ public class ItemObjectServiceImpl implements ItemObjectService {
                     weaponDTO.setItemObjectId(itemObjectDTO.getId());
                     weaponDTO = weaponService.save(weaponDTO);
 
-                    WeaponDetlDTO weaponDetlDTO = createWeapon.getWeaponDetlDTO();
-                    weaponDetlDTO = weaponDetlService.save(weaponDetlDTO);
-
-
                     createWeapon.setItemObjectDTO(itemObjectDTO);
                     createWeapon.setWeaponDTO(weaponDTO);
-                    createWeapon.setWeaponDetlDTO(weaponDetlDTO);
                     createItemObjectResponse.setCreateWeapon(createWeapon);
                 }
             } else if (request.getCreateArmor() != null) {
@@ -116,10 +111,6 @@ public class ItemObjectServiceImpl implements ItemObjectService {
                     armorDTO.setItemObjectId(itemObjectDTO.getId());
                     armorDTO = armorService.save(armorDTO);
 
-                    ArmorDetlDTO armorDetlDTO = createArmor.getArmorDetl();
-                    armorDetlDTO = armorDetlService.save(armorDetlDTO);
-
-                    createArmor.setArmorDetl(armorDetlDTO);
                     createArmor.setArmorDTO(armorDTO);
                     createArmor.setItemObjectDTO(itemObjectDTO);
                     createItemObjectResponse.setCreateArmor(createArmor);

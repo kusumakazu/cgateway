@@ -12,6 +12,10 @@ public class WeaponDTO implements Serializable {
     
     private Long id;
 
+    private String weaponName;
+
+    private String weaponDescription;
+
     private Double baseATK;
 
     private WeaponType weaponType;
@@ -22,8 +26,6 @@ public class WeaponDTO implements Serializable {
 
 
     private Long itemObjectId;
-
-    private Long weaponDetlId;
     
     public Long getId() {
         return id;
@@ -31,6 +33,22 @@ public class WeaponDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getWeaponName() {
+        return weaponName;
+    }
+
+    public void setWeaponName(String weaponName) {
+        this.weaponName = weaponName;
+    }
+
+    public String getWeaponDescription() {
+        return weaponDescription;
+    }
+
+    public void setWeaponDescription(String weaponDescription) {
+        this.weaponDescription = weaponDescription;
     }
 
     public Double getBaseATK() {
@@ -73,14 +91,6 @@ public class WeaponDTO implements Serializable {
         this.itemObjectId = itemObjectId;
     }
 
-    public Long getWeaponDetlId() {
-        return weaponDetlId;
-    }
-
-    public void setWeaponDetlId(Long weaponDetlId) {
-        this.weaponDetlId = weaponDetlId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -103,12 +113,13 @@ public class WeaponDTO implements Serializable {
     public String toString() {
         return "WeaponDTO{" +
             "id=" + getId() +
+            ", weaponName='" + getWeaponName() + "'" +
+            ", weaponDescription='" + getWeaponDescription() + "'" +
             ", baseATK=" + getBaseATK() +
             ", weaponType='" + getWeaponType() + "'" +
             ", weaponSize='" + getWeaponSize() + "'" +
             ", rarity='" + getRarity() + "'" +
             ", itemObjectId=" + getItemObjectId() +
-            ", weaponDetlId=" + getWeaponDetlId() +
             "}";
     }
 }

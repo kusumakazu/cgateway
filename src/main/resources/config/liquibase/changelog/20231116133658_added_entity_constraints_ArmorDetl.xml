@@ -14,6 +14,12 @@
                                  referencedColumnNames="id"
                                  referencedTableName="player"/>
 
+        <addForeignKeyConstraint baseColumnNames="armor_id"
+                                 baseTableName="armor_detl"
+                                 constraintName="fk_armor_detl_armor_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="armor"/>
+
         <addForeignKeyConstraint baseColumnNames="enchantment_id"
                                  baseTableName="armor_detl"
                                  constraintName="fk_armor_detl_enchantment_id"

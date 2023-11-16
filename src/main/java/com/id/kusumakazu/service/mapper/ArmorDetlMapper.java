@@ -9,16 +9,16 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link ArmorDetl} and its DTO {@link ArmorDetlDTO}.
  */
-@Mapper(componentModel = "spring", uses = {PlayerMapper.class, EnchantmentMapper.class})
+@Mapper(componentModel = "spring", uses = {PlayerMapper.class, ArmorMapper.class, EnchantmentMapper.class})
 public interface ArmorDetlMapper extends EntityMapper<ArmorDetlDTO, ArmorDetl> {
 
     @Mapping(source = "player.id", target = "playerId")
+    @Mapping(source = "armor.id", target = "armorId")
     @Mapping(source = "enchantment.id", target = "enchantmentId")
     ArmorDetlDTO toDto(ArmorDetl armorDetl);
 
-    @Mapping(target = "armors", ignore = true)
-    @Mapping(target = "removeArmor", ignore = true)
     @Mapping(source = "playerId", target = "player")
+    @Mapping(source = "armorId", target = "armor")
     @Mapping(source = "enchantmentId", target = "enchantment")
     ArmorDetl toEntity(ArmorDetlDTO armorDetlDTO);
 

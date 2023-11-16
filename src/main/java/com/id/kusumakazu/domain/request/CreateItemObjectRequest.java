@@ -2,7 +2,6 @@ package com.id.kusumakazu.domain.request;
 
 import com.id.kusumakazu.domain.response.create.CreateArmor;
 import com.id.kusumakazu.domain.response.create.CreateWeapon;
-import com.id.kusumakazu.service.dto.PlayerDTO;
 
 import java.io.Serializable;
 

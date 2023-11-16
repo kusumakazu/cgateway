@@ -12,6 +12,10 @@ public class ArmorDTO implements Serializable {
     
     private Long id;
 
+    private String armorName;
+
+    private String armorDescription;
+
     private Double baseDEF;
 
     private Double baseHP;
@@ -24,8 +28,6 @@ public class ArmorDTO implements Serializable {
 
 
     private Long itemObjectId;
-
-    private Long armorDetlId;
     
     public Long getId() {
         return id;
@@ -33,6 +35,22 @@ public class ArmorDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getArmorName() {
+        return armorName;
+    }
+
+    public void setArmorName(String armorName) {
+        this.armorName = armorName;
+    }
+
+    public String getArmorDescription() {
+        return armorDescription;
+    }
+
+    public void setArmorDescription(String armorDescription) {
+        this.armorDescription = armorDescription;
     }
 
     public Double getBaseDEF() {
@@ -83,14 +101,6 @@ public class ArmorDTO implements Serializable {
         this.itemObjectId = itemObjectId;
     }
 
-    public Long getArmorDetlId() {
-        return armorDetlId;
-    }
-
-    public void setArmorDetlId(Long armorDetlId) {
-        this.armorDetlId = armorDetlId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -113,13 +123,14 @@ public class ArmorDTO implements Serializable {
     public String toString() {
         return "ArmorDTO{" +
             "id=" + getId() +
+            ", armorName='" + getArmorName() + "'" +
+            ", armorDescription='" + getArmorDescription() + "'" +
             ", baseDEF=" + getBaseDEF() +
             ", baseHP=" + getBaseHP() +
             ", armorType='" + getArmorType() + "'" +
             ", armorsize='" + getArmorsize() + "'" +
             ", rarity='" + getRarity() + "'" +
             ", itemObjectId=" + getItemObjectId() +
-            ", armorDetlId=" + getArmorDetlId() +
             "}";
     }
 }

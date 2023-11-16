@@ -14,11 +14,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="item_object"/>
 
-        <addForeignKeyConstraint baseColumnNames="weapon_detl_id"
-                                 baseTableName="weapon"
-                                 constraintName="fk_weapon_weapon_detl_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="weapon_detl"/>
-
     </changeSet>
 </databaseChangeLog>
