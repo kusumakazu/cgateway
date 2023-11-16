@@ -1,13 +1,19 @@
 package com.id.kusumakazu.service.impl;
 
-import com.id.kusumakazu.service.ItemObjectService;
+import com.id.kusumakazu.domain.enumeration.ItemObjectType;
+import com.id.kusumakazu.domain.request.CreateItemObjectRequest;
+import com.id.kusumakazu.domain.response.CreateItemObjectResponse;
+import com.id.kusumakazu.domain.response.create.CreateArmor;
+import com.id.kusumakazu.domain.response.create.CreateWeapon;
+import com.id.kusumakazu.service.*;
 import com.id.kusumakazu.domain.ItemObject;
 import com.id.kusumakazu.repository.ItemObjectRepository;
-import com.id.kusumakazu.service.dto.ItemObjectDTO;
+import com.id.kusumakazu.service.dto.*;
 import com.id.kusumakazu.service.mapper.ItemObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +34,14 @@ public class ItemObjectServiceImpl implements ItemObjectService {
     private final ItemObjectRepository itemObjectRepository;
 
     private final ItemObjectMapper itemObjectMapper;
+    @Autowired
+    private WeaponService weaponService;
+    @Autowired
+    private WeaponDetlService weaponDetlService;
+    @Autowired
+    private ArmorService armorService;
+    @Autowired
+    private ArmorDetlService armorDetlService;
 
     public ItemObjectServiceImpl(ItemObjectRepository itemObjectRepository, ItemObjectMapper itemObjectMapper) {
         this.itemObjectRepository = itemObjectRepository;
@@ -64,5 +78,56 @@ public class ItemObjectServiceImpl implements ItemObjectService {
     public void delete(Long id) {
         log.debug("Request to delete ItemObject : {}", id);
         itemObjectRepository.deleteById(id);
+    }
+
+    @Override
+    public CreateItemObjectResponse createItemObject(CreateItemObjectRequest request) {
+        log.info("Request to create a Item Object");
+        CreateItemObjectResponse createItemObjectResponse = new CreateItemObjectResponse();
+
+        if (request != null){
+            if (request.getCreateWeapon() != null){
+                if (request.getCreateWeapon().getItemObjectDTO().getItemObjectType() == ItemObjectType.WEAPON ){
+                    CreateWeapon createWeapon = request.getCreateWeapon();
+
+                    ItemObjectDTO itemObjectDTO = createWeapon.getItemObjectDTO();
+                    itemObjectDTO = save(itemObjectDTO);
+
+                    WeaponDTO weaponDTO = createWeapon.getWeaponDTO();
+                    weaponDTO.setItemObjectId(itemObjectDTO.getId());
+                    weaponDTO = weaponService.save(weaponDTO);
+
+                    WeaponDetlDTO weaponDetlDTO = createWeapon.getWeaponDetlDTO();
+                    weaponDetlDTO = weaponDetlService.save(weaponDetlDTO);
+
+
+                    createWeapon.setItemObjectDTO(itemObjectDTO);
+                    createWeapon.setWeaponDTO(weaponDTO);
+                    createWeapon.setWeaponDetlDTO(weaponDetlDTO);
+                    createItemObjectResponse.setCreateWeapon(createWeapon);
+                }
+            } else if (request.getCreateArmor() != null) {
+                if (request.getCreateArmor().getItemObjectDTO().getItemObjectType() == ItemObjectType.ARMOR) {
+                    CreateArmor createArmor = request.getCreateArmor();
+                    ItemObjectDTO itemObjectDTO = createArmor.getItemObjectDTO();
+                    itemObjectDTO = save(itemObjectDTO);
+
+                    ArmorDTO armorDTO = createArmor.getArmorDTO();
+                    armorDTO.setItemObjectId(itemObjectDTO.getId());
+                    armorDTO = armorService.save(armorDTO);
+
+                    ArmorDetlDTO armorDetlDTO = createArmor.getArmorDetl();
+                    armorDetlDTO = armorDetlService.save(armorDetlDTO);
+
+                    createArmor.setArmorDetl(armorDetlDTO);
+                    createArmor.setArmorDTO(armorDTO);
+                    createArmor.setItemObjectDTO(itemObjectDTO);
+                    createItemObjectResponse.setCreateArmor(createArmor);
+                }
+            }
+        }else {
+            createItemObjectResponse.setError("DATA NULL OR NOT FILLED");
+        }
+        return createItemObjectResponse;
     }
 }

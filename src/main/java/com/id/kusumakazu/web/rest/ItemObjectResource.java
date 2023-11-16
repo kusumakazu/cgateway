@@ -1,5 +1,7 @@
 package com.id.kusumakazu.web.rest;
 
+import com.id.kusumakazu.domain.request.CreateItemObjectRequest;
+import com.id.kusumakazu.domain.response.CreateItemObjectResponse;
 import com.id.kusumakazu.service.ItemObjectService;
 import com.id.kusumakazu.web.rest.errors.BadRequestAlertException;
 import com.id.kusumakazu.service.dto.ItemObjectDTO;
@@ -112,5 +114,17 @@ public class ItemObjectResource {
         log.debug("REST request to delete ItemObject : {}", id);
         itemObjectService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+    }
+
+    //new api
+
+    @PostMapping("/item-objects/create-new-item")
+    public ResponseEntity<CreateItemObjectResponse> createItemObject(@RequestBody CreateItemObjectRequest request) throws URISyntaxException {
+        log.debug("REST request to save ItemObject : {}", request);
+
+        CreateItemObjectResponse result = itemObjectService.createItemObject(request);
+        return ResponseEntity.created(new URI("OK"))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, request.toString()))
+            .body(result);
     }
 }

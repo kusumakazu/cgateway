@@ -1,5 +1,7 @@
 package com.id.kusumakazu.service;
 
+import com.id.kusumakazu.domain.request.CreateItemObjectRequest;
+import com.id.kusumakazu.domain.response.CreateItemObjectResponse;
 import com.id.kusumakazu.service.dto.ItemObjectDTO;
 
 import java.util.List;
@@ -40,4 +42,7 @@ public interface ItemObjectService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    // new api
+    CreateItemObjectResponse createItemObject(CreateItemObjectRequest request);
 }
