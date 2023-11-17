@@ -29,6 +29,7 @@
     <include file="config/liquibase/changelog/20231116125650_added_entity_WeaponDetl.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20231116133658_added_entity_ArmorDetl.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20231116133958_added_entity_Enchantment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231117070724_added_entity_UserSession.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20231116115624_added_entity_constraints_StorageInventory.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20231116115824_added_entity_constraints_GameAccount.xml" relativeToChangelogFile="false"/>

@@ -1,0 +1,38 @@
+{
+  "name": "UserSession",
+  "fields": [
+    {
+      "fieldName": "sessionId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "connId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "statusConn",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "playerId",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20231117070724",
+  "entityTableName": "user_session",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "cgatewaysvc",
+  "applications": "*",
+  "microserviceName": "cgatewaysvc"
+}
