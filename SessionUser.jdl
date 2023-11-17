@@ -1,0 +1,11 @@
+entity UserSession {
+    sessionId String
+    email String
+    connId String
+    statusConn Boolean
+    playerId Long
+
+}
+dto UserSession with mapstruct
+service UserSession with serviceClass
+service UserSession with serviceImpl
